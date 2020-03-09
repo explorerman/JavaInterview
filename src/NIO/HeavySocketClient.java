@@ -50,7 +50,7 @@ public class HeavySocketClient {
 				LockSupport.parkNanos(sleep_time);
 				write.println();
 				write.flush();
-				
+
 				reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
 				System.out.println("from server = "+reader.readLine());
 			} catch (IOException e) {
@@ -73,7 +73,6 @@ public class HeavySocketClient {
 		for(int i = 0; i < 10; i++){
 			tp.execute(ec);
 		}
-
 	}
 
 }
