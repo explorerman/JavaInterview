@@ -1,6 +1,6 @@
 package leetcode_tree;
 
-public class number114 {
+public class number114_1 {
     //
 //     1
 //   / \

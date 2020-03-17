@@ -1,6 +1,6 @@
 package leetcode_tree;
 
-public class number105 {
+public class number105_1 {
     //前序：根左右 preorder = [3,9,20,15,7]
     //中序：左根右 inorder = [9,3,15,20,7]
     public TreeNode buildTree(int[] preorder, int[] inorder) {

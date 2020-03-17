@@ -1,6 +1,6 @@
 package leetcode_list;
 
-public class number82 {
+public class number82_1 {
     public ListNode deleteDuplicates(ListNode head) {
         if(head == null) return null;
         ListNode dummy = new ListNode(-1);

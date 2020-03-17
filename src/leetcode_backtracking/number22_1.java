@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-public class number22 {
+public class number22_1 {
     public List<String> generateParenthesis(int n) {
         List<String> res = new ArrayList<>();
         if(n < 0) return res;

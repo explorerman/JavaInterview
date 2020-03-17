@@ -1,6 +1,6 @@
 package leetcode_tree;
 
-public class number108 {
+public class number108_1 {
 
     //平衡树：左右子树高度差不超过1，搜索树：根节点大于左节点，小于右节点
     //[-10,-3,0,5,9]   [0,-3,9,-10,null,5]

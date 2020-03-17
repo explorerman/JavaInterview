@@ -1,7 +1,7 @@
 package leetcode_tree;
 
 
-public class number110 {
+public class number110_1 {
     public  boolean isBalanced(TreeNode root) {
         if(root == null) return true;
         int left = depth(root.left);

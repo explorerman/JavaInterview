@@ -3,7 +3,7 @@ package leetcode_tree;
 import java.util.ArrayList;
 import java.util.List;
 
-public class number572 {
+public class number572_1 {
     private List<Integer> sList = new ArrayList<>();
     private List<Integer> tList = new ArrayList<>();
     public boolean isSubtree(TreeNode s, TreeNode t) {

@@ -1,6 +1,6 @@
 package leetcode_list;
 
-public class number876 {
+public class number876_1 {
     public ListNode middleNode(ListNode head) {
         ListNode cur = head;
         int count = 0;

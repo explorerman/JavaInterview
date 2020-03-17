@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class number143 {
+public class number143_1 {
     //给定链表 1->2->3->4, 重新排列为 1->4->2->3
     //给定链表1->2->3->4->5 重新排列为 1->5->2->4->3.
     // L0→Ln→L1→Ln-1→L2→Ln-2→…

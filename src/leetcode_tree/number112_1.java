@@ -1,6 +1,6 @@
 package leetcode_tree;
 
-public class number112 {
+public class number112_1 {
     //dfs,bfs,回溯法
     public boolean hasPathSum(TreeNode root, int sum) {
         if(root == null) return false;

@@ -3,7 +3,7 @@ package leetcode_tree;
 import java.util.ArrayList;
 import java.util.List;
 
-public class number257 {
+public class number257_1 {
     public List<String> binaryTreePaths(TreeNode root) {
         List<String> res = new ArrayList<>();
         if(root != null) reTree(root,"",res);

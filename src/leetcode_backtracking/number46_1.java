@@ -3,7 +3,7 @@ package leetcode_backtracking;
 import java.util.ArrayList;
 import java.util.List;
 
-public class number46 {
+public class number46_1 {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if(nums.length == 0 || nums == null){
