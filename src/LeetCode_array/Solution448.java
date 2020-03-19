@@ -2,9 +2,12 @@ package LeetCode_array;
 
 import java.util.ArrayList;
 import java.util.List;
-
+//找到所有数组中消失的数字
 public class Solution448 {
 
+	//思路：跟442题解法一样
+	//  对每个数字nums[i],如果其对应的nums[nums[i] -1]是正数，
+	//  我们就赋值为其相反数，如果已经是负数了，就不变了，最后我们只要把留下的正整数对应的位置加入结果链表中即可。
 	public List<Integer> findDisappearedNumbers(int[] nums) {
 		List<Integer> rs = new ArrayList<>();
 		for (int i = 0; i < nums.length; i++) {

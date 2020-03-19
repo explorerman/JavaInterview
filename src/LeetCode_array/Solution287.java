@@ -1,5 +1,7 @@
 package LeetCode_array;
 
+import java.util.HashMap;
+//寻找重复数
 public class Solution287 {
 
     /**
@@ -29,6 +31,19 @@ public class Solution287 {
         int t = nums[i];
         nums[i] = nums[j];
         nums[j] = t;
+    }
+
+
+    //思路：使用set,或者hashmap的方法来判断，找到大于2的就return
+    public int findDuplicate2(int[] nums) {
+        if(nums.length == 0) return 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (Integer num : nums) {
+            map.put(num, map.getOrDefault(num, 0) + 1);
+            if(map.get(num) >= 2)
+                return num;
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
