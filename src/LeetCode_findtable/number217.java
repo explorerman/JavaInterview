@@ -1,7 +1,7 @@
-package LeetCode_number_twoPoint;
+package LeetCode_findtable;
 
 import java.util.HashMap;
-
+//存在重复元素
 public class number217 {
     //输入: [1,2,3,1]
     //输出: true
