@@ -6,12 +6,11 @@ import java.util.HashMap;
 public class number219 {
     //输入: nums = [1,2,3,1,2,3], k = 2
     //输出: true
-    //暴力破解
+    //暴力破解，时间复杂度太高，仅仅击败全国百分之5的人
     public boolean containsNearbyDuplicate(int[] nums, int k) {
         int length = nums.length;
         if(nums.length < 0) return false;
         int[] arr = new int[0];
-        HashMap<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < length; i++) {
             for (int j = i+1; ((j - i) <= k) && j < length; j++) {
                 if(nums[j] == nums[i]){
