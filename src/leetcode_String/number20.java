@@ -26,7 +26,7 @@ public class number20 {
     public  boolean isCompare(char a, char b){
         if (a == '{' && b=='}') {
             return true;
-        }else if(a=='('&&b==')'){
+        }else if(a =='('&& b ==')'){
             return true;
         }else return a == '[' && b == ']';
     }
