@@ -1,0 +1,40 @@
+方法注释
+
+*
+ *功能描述
+ * @name $name$
+ * @createTime: $DATE$ $TIME$
+ * @param $params$ 
+ * @author 李杰
+ * @return $return$
+ * @history 修订历史（历次修订内容、修订人、修订时间等）
+ */
+
+
+
+变量注释
+
+
+/**
+ * @description 字段功能描述
+ * @value value:$value$
+ */
+
+类注释
+
+
+/**
+ * @Description ${description}
+ * @package ${package_name}
+ * @file ${fileName.java} 
+ * @createTime: 创建时间: ${DATE} ${TIME}
+ * @title 标题: ${description}
+ * @copyright Copyright (c) ${YEAR} 中国软件与技术服务股份有限公司
+ * @company 中国软件与技术服务股份有限公司
+ * @module 模块: 模块名称
+ * @author  李杰
+ * @reviewer 审核人
+ * @version 1.0
+ * @history 修订历史（历次修订内容、修订人、修订时间等）
+ *
+ */
