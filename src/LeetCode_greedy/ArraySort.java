@@ -3,6 +3,7 @@ package LeetCode_greedy;
 import java.util.Arrays;
 import java.util.Comparator;
 
+//重写排序sort
 public class ArraySort {
     public static void sort(int[][] ob, int[] order) {
 //        Arrays.sort(ob, new Comparator<Object>() {
@@ -22,9 +23,11 @@ public class ArraySort {
 //                return 0;
 //            }
 //        });
+
         Arrays.sort(ob, new Comparator<int[]>() {
             @Override
             public int compare(int[] o1, int[] o2) {
+                //o1 - o2是升序，反之则反，该方法返回正数时，以第一个参数大于第二个
                 return o1[0] == o2[0] ? o1[1] - o2[1] : o2[0] - o1[0];
             }
         });

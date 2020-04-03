@@ -52,6 +52,32 @@ write->db->同步->es<->search
 
 ## elastic->solr->es
 
+### es的使用
+
+1. create
+
+   create(String sessionId, String indexName, List<Map> dataList, boolean refresh)，
+
+   其中sessionId， 可以为null
+
+   indexName 索引名称,目前oa中只有一个gwgl的index
+
+   dataList  添加的记录, List格式, Map结结构中key为字段名称， value为具体数据
+
+   相当于hash一样，大key是indexName,小key是map的key，可以传入处理单id
+
+   refresh   是否立即刷新，true：强制刷新，可以及时检索到，false：按es的刷新策略刷新，有一定延时，但对存储日志效率高
+
+2. update
+
+   更新es
+
+3. search
+
+   查找es
+
+   
+
 ## redis
 
 [jedis和spring-data-redis的区别](https://blog.csdn.net/xhaimail/article/details/80685550)
@@ -76,6 +102,14 @@ es在存库的时候操作（保持事务的一致性）
 
 扩展：es的分词算法是怎么实现的。
 
+### AegisCacheUtils的用法
+
+存放的是通过redis对应表中获取字典数据等的信息的API，常用的两个就是获取list和map的方法：
+
+1. getMapCacheValueFromRedisByTableNameAndDmz(String tableName, String dmz)
+
+   tablename就是表名，dmz就是数据库中redis对应表的index_columns列的值，其中index_columns列的值可能是个字符串：wjlxId,appId,orgId。
+
 ## vo,po,do,dto
 
 1. vo就是我们在web的controller层返回的Object，在接口中这个VO都会被转成Json对象输出，view object。 
@@ -83,3 +117,36 @@ es在存库的时候操作（保持事务的一致性）
 3.  DTO就是一个复合的DO对象，由于业务需要我们需要调用业务A查询数据得到业务对象A，再调用业务B查询数据得到业务对象B然后一系列封装转化得到复合的对象C此时他就是一个DTO，data transfer object 它是一个服务层和服务层以上之间转换的对象。 
 4.  po持久化对象 一般放在domain 或者 Entry中是一个与数据库表关联的对象，每一个属性都是表中的一个字段。
    当业务过于简单时，po ，do，dto，vo并没有什么区别的时候我们也可以直接复用PO 
+
+## fastjson的使用
+
+fastjson和Jackson的比较：
+
+fastsjon是阿里的，Jackson外国人用的比较多
+
+[参考知乎问题，fastjson这么快为什么老外还热衷于Jackson](https://www.zhihu.com/question/44199956)
+
+[fastjson在创建对象时与jackson的比较，fastjson快一些](https://www.jianshu.com/p/a3ebb54445be)
+
+常用的工具：JSONObject,JSON
+
+## spring中调用远程API
+
+1. 在常量类中定义远程API的路径：可以写成单例：双检索等。
+
+   ```java
+    private static final String API_QX001ORGAPI_QUERYORGBYORGID = "/Qx001OrgAPI/queryOrgByOrgId";
+   
+       public static String getApiQx001orgapiQueryorgbyorgid() {
+           return API_QX001ORGAPI_QUERYORGBYORGID;
+       }
+   ```
+
+2. 如果是公用的API，则可以在util包里写一个公用方法：方法的大概过程为：
+
+   1. 获取上面写的API路径
+   2. 根据API路径实例化restRequest类
+   3. 创建RestClientUtils类似的类用来发起post，put等rest请求，请求参数中可以根据实际自定义，一般都转化为json形式。
+   4. 根据3中返回的response的状态，如果返回错误，则返回异常信息
+   5. 如果返回正常，则获取body,将body转成JsonResult,并取出info体,用于别的业务.
+
