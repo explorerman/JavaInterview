@@ -33,8 +33,9 @@ public class CyclicBarrierExample {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(totalThread);
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < totalThread; i++) {
+            int finalI = i;
             executorService.execute(() -> {
-                System.out.print("before..");
+                System.out.print("before.." + finalI + " ");
                 try {
                     cyclicBarrier.await();
                 } catch (InterruptedException | BrokenBarrierException e) {

@@ -18,8 +18,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class MultiThreadNIOEchoServer {
-	public static Map<Socket,Long> geym_time_stat=new HashMap<Socket,Long>(10240);
-	
+    public static Map<Socket, Long> geym_time_stat = new HashMap<Socket, Long>(10240);
+
     class EchoClient {
         private LinkedList<ByteBuffer> outq;
 
@@ -38,13 +38,15 @@ public class MultiThreadNIOEchoServer {
         }
     }
 
-    class HandleMsg implements Runnable{
+    class HandleMsg implements Runnable {
         SelectionKey sk;
         ByteBuffer bb;
-        public HandleMsg(SelectionKey sk,ByteBuffer bb){
+
+        public HandleMsg(SelectionKey sk, ByteBuffer bb) {
             this.sk = sk;
             this.bb = bb;
         }
+
         @Override
         public void run() {
             EchoClient echoClient = (EchoClient) sk.attachment();
@@ -57,9 +59,10 @@ public class MultiThreadNIOEchoServer {
             selector.wakeup();
         }
     }
-    
+
     private Selector selector;
-    private ExecutorService  tp=Executors.newCachedThreadPool();
+    private ExecutorService tp = Executors.newCachedThreadPool();
+
     /**
      * Accept a new client and set it up for reading.
      */
@@ -108,7 +111,7 @@ public class MultiThreadNIOEchoServer {
 
         // Flip the buffer.
         bb.flip();
-        tp.execute(new HandleMsg(sk,bb));
+        tp.execute(new HandleMsg(sk, bb));
     }
 
     /**
@@ -172,10 +175,10 @@ public class MultiThreadNIOEchoServer {
 
         // Register the socket for select events. SelectableChannel 和 Selector建立了连接. 
         SelectionKey acceptKey = ssc.register(selector, SelectionKey.OP_ACCEPT);
-        
+
         // Loop forever.
-        for (;;) {
-             selector.select();  //该方法是阻塞的，返回的结果是已经准备就绪的SelectionKey数量
+        for (; ; ) {
+            selector.select();  //该方法是阻塞的，返回的结果是已经准备就绪的SelectionKey数量
 //            if(selector.selectNow()==0){
 //                continue;
 //            }
@@ -184,23 +187,21 @@ public class MultiThreadNIOEchoServer {
             long e = 0;
             while (i.hasNext()) {
                 SelectionKey sk = (SelectionKey) i.next();
-                i.remove();	//因为已经获取了该元素对应的SelectionKey，所以将其删除，删除的原因是防止重复处理相同的SelectionKey.
-                
+                i.remove();    //因为已经获取了该元素对应的SelectionKey，所以将其删除，删除的原因是防止重复处理相同的SelectionKey.
+
                 //判断SelectionKey所代表Channel是否是acceptable
                 if (sk.isAcceptable()) {
-                    doAccept(sk);  
-                }
-                else if (sk.isValid() && sk.isReadable()) {
-                	if(!geym_time_stat.containsKey(((SocketChannel)sk.channel()).socket()))
-                		geym_time_stat.put(((SocketChannel)sk.channel()).socket(), 
-                			System.currentTimeMillis());
+                    doAccept(sk);
+                } else if (sk.isValid() && sk.isReadable()) {
+                    if (!geym_time_stat.containsKey(((SocketChannel) sk.channel()).socket()))
+                        geym_time_stat.put(((SocketChannel) sk.channel()).socket(),
+                                System.currentTimeMillis());
                     doRead(sk);
-                }
-                else if (sk.isValid() && sk.isWritable()) {
+                } else if (sk.isValid() && sk.isWritable()) {
                     doWrite(sk);
-                    e=System.currentTimeMillis();
-                    long b=geym_time_stat.remove(((SocketChannel)sk.channel()).socket());
-                    System.out.println("spend:"+(e-b)+"ms");
+                    e = System.currentTimeMillis();
+                    long b = geym_time_stat.remove(((SocketChannel) sk.channel()).socket());
+                    System.out.println("spend:" + (e - b) + "ms");
                 }
             }
         }

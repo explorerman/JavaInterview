@@ -34,7 +34,7 @@ public class CountdownLatchExample {
             int finalI = i;
             executorService.execute(() -> {
                 System.out.print("run.."+ finalI +" ");
-                countDownLatch.countDown();
+                countDownLatch.countDown();  //计数器-1
             });
         }
         countDownLatch.await();
