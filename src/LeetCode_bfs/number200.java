@@ -9,7 +9,6 @@ public class number200 {
      * 在遍历’1‘的时候，且该位置没有被访问过，则调用一个BFS，借助队列queue完成。
      * 将当前位置加入队列，然后进行while循环，将队首元素提取出来，并遍历其四周，若没有
      * 越界的话，则将visited中该邻居位置标记为true，并将其加入队列中等待下次遍历。
-     * @param args
      */
     public int numIslands(char[][] grid){
         if(grid.length == 0) return 0;
