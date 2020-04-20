@@ -23,6 +23,7 @@ public class HeavySocketClient {
 
 		@Override
 		public void run() {
+			System.out.printf("当前线程是："+Thread.currentThread().getName());
 			Socket client = null;
 			BufferedReader reader = null;
 			PrintWriter write = null;
@@ -52,7 +53,7 @@ public class HeavySocketClient {
 				write.flush();
 
 				reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-				System.out.println("from server = "+reader.readLine());
+				System.out.println("from server = "+reader.readLine() + " " + Thread.currentThread().getName());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}finally {
