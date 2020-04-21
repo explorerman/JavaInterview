@@ -31,12 +31,14 @@ public class SemaphoreExample {
         for (int i = 0; i < totalRequestCount; i++) {
             executorService.execute(() -> {
                 try {
+                    System.out.println(Thread.currentThread().getName()+"   ");
                     semaphore.acquire();
-                    System.out.print(semaphore.availablePermits() + " ");
+                    System.out.println(semaphore.availablePermits() + " ");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
                     semaphore.release();
+                    System.out.println("release = "+ Thread.currentThread().getName());
                 }
             });
         }
