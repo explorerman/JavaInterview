@@ -7,6 +7,7 @@ public class Client {
 		new Thread(){
 			public void run() {
 				RealData realData = new RealData(queryStr);
+				System.out.println("realData数据已经准备好了" + realData.getResult());
 				future.setRealData(realData);
 			};
 		}.start();
