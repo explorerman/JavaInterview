@@ -25,14 +25,14 @@ public class SemaphoreExample {
      */
     public static void main(String[] args) {
         final int clientCount = 3;
-        final int totalRequestCount = 10;
+        final int totalRequestCount = 15;
         Semaphore semaphore = new Semaphore(clientCount);
         ExecutorService executorService = Executors.newCachedThreadPool();
         for (int i = 0; i < totalRequestCount; i++) {
             executorService.execute(() -> {
                 try {
                     System.out.println(Thread.currentThread().getName()+"   ");
-                    semaphore.acquire();
+                    semaphore.acquire(1);
                     System.out.println(semaphore.availablePermits() + " ");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
