@@ -23,7 +23,7 @@ public class ClientSocket {
 			write.flush();
 			
 			reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			System.out.println("from server = "+reader.readLine());
+			System.out.println("from server = "+reader.readLine()+" "+ Thread.currentThread().getName());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally {
