@@ -1,4 +1,5 @@
 package ThreadLocalTest;
+
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -19,7 +20,7 @@ public class ThreadPoolExecutorTest {
 
 }
 
-class MyTask implements Runnable{
+class MyTask implements Runnable {
     private int taskNum;
 
     public MyTask(int num) {
@@ -29,13 +30,13 @@ class MyTask implements Runnable{
     @SuppressWarnings("static-access")
     @Override
     public void run() {
-        System.out.println("正在执行task "+taskNum);
+        System.out.println("正在执行task " + taskNum);
         try {
             Thread.currentThread().sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("task "+taskNum+"执行完毕");
+        System.out.println("task " + taskNum + "执行完毕");
     }
 
 
