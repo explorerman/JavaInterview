@@ -1,4 +1,4 @@
-package JUC_pv;
+package java_basic;
 
 import java.io.Serializable;
 
