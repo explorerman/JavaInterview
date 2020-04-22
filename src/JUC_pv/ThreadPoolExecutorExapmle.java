@@ -26,6 +26,8 @@ public class ThreadPoolExecutorExapmle {
                 10,
                 10,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(1024));
+                new ArrayBlockingQueue<>(1024),
+                new ThreadPoolExecutor.DiscardOldestPolicy()
+        );
     }
 }
