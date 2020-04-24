@@ -2,8 +2,6 @@ package LeetCode_dp;
 
 //最长回文字串
 
-import java.util.Arrays;
-
 /**
  * 三种解决：
  * 1.根据回文串特性，中间节点开始往左右找，回文串分奇数和偶数
@@ -78,6 +76,8 @@ public class number5 {
 //            }
 //        }
 //        return s.substring(left, left + len);
+
+        return "";
     }
 
 
