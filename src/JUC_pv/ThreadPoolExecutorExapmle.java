@@ -1,6 +1,7 @@
 package JUC_pv;
 
 import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
  * @history 修订历史（历次修订内容、修订人、修订时间等）
  */
 public class ThreadPoolExecutorExapmle {
-    private static ThreadPoolExecutor threadPoolExecutor1;
+    public static ThreadPoolExecutor threadPoolExecutor1;
 
     static {
         threadPoolExecutor1 = new ThreadPoolExecutor(5,
@@ -27,7 +28,13 @@ public class ThreadPoolExecutorExapmle {
                 10,
                 TimeUnit.SECONDS,
                 new ArrayBlockingQueue<>(1024),
-                new ThreadPoolExecutor.DiscardOldestPolicy()
+                new ThreadFactory() {
+                    @Override
+                    public Thread newThread(Runnable r) {
+                        return new Thread(r, "这是我自己池的线程_pool" + r.hashCode());
+                    }
+                },
+        new ThreadPoolExecutor.DiscardOldestPolicy()
         );
     }
 }
