@@ -21,6 +21,7 @@ public class ThreadUnsafeExample {
 
     public void add() {
         cnt++;
+        System.out.println(Thread.currentThread().getName());
     }
 
     public int get() {

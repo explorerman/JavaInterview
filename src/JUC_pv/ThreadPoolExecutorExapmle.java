@@ -31,7 +31,7 @@ public class ThreadPoolExecutorExapmle {
                 new ThreadFactory() {
                     @Override
                     public Thread newThread(Runnable r) {
-                        return new Thread(r, "这是我自己池的线程_pool" + r.hashCode());
+                        return new Thread(r, "ThreadPoolExecutorExapmle的线程池" + r.hashCode());
                     }
                 },
         new ThreadPoolExecutor.DiscardOldestPolicy()
