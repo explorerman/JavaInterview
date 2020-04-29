@@ -18,20 +18,17 @@ public class number417 {
         boolean[][] pacific = new boolean[row][col];
         boolean[][] atlantic = new boolean[row][col];
         for (int i = 0; i < row; i++) {
-            DFS(matrix, pacific, Integer.MIN_VALUE, i, 0);
-            DFS(matrix, atlantic, Integer.MIN_VALUE, i, col - 1);
+            DFS(matrix, atlantic, Integer.MIN_VALUE, i, 0);
+            DFS(matrix, pacific, Integer.MIN_VALUE, i, col - 1);
         }
         for (int i = 0; i < col; i++) {
-            DFS(matrix, pacific, Integer.MIN_VALUE, 0, i);
-            DFS(matrix, atlantic, Integer.MIN_VALUE, row - 1, i);
+            DFS(matrix, atlantic, Integer.MIN_VALUE, 0, i);
+            DFS(matrix, pacific, Integer.MIN_VALUE, row - 1, i);
         }
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
-                if (pacific[i][j] && atlantic[i][i]) {
-                    tempRes = new ArrayList<>();
-                    tempRes.add(i);
-                    tempRes.add(j);
-                    res.add(tempRes);
+                if (pacific[i][j] == true && atlantic[i][i] == true) {
+                    res.add(Arrays.asList(i,j));
                 }
             }
         }
