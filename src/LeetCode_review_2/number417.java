@@ -6,24 +6,23 @@ import java.util.List;
 
 //太平洋大西洋水流问题
 public class number417 {
-    int[] px = new int[]{-1, 0, 1, 0};
-    int[] py = new int[]{0, -1, 0, 1};
+    int[] px = new int[]{1, 0, -1, 0};
+    int[] py = new int[]{0, 1, 0, -1};
 
     public List<List<Integer>> pacificAtlantic(int[][] matrix) {
         List<List<Integer>> res = new ArrayList<>();
-        List<Integer> tempRes = null;
         if (matrix.length == 0) return res;
         int row = matrix.length;
         int col = matrix[0].length;
-        boolean[][] pacific = new boolean[row][col];
-        boolean[][] atlantic = new boolean[row][col];
+        boolean[][] pacific = new boolean[row][col]; //左上太平洋
+        boolean[][] atlantic = new boolean[row][col]; //右下大西洋
         for (int i = 0; i < row; i++) {
-            DFS(matrix, atlantic, Integer.MIN_VALUE, i, 0);
-            DFS(matrix, pacific, Integer.MIN_VALUE, i, col - 1);
+            DFS(matrix, pacific, Integer.MIN_VALUE, i, 0);
+            DFS(matrix, atlantic, Integer.MIN_VALUE, i, col - 1);
         }
         for (int i = 0; i < col; i++) {
-            DFS(matrix, atlantic, Integer.MIN_VALUE, 0, i);
-            DFS(matrix, pacific, Integer.MIN_VALUE, row - 1, i);
+            DFS(matrix, pacific, Integer.MIN_VALUE, 0, i);
+            DFS(matrix, atlantic, Integer.MIN_VALUE, row - 1, i);
         }
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
@@ -48,5 +47,7 @@ public class number417 {
     public static void main(String[] args) {
         int[][] matrix = new int[5][5];
         new number417().pacificAtlantic(matrix);
+        //[[1,0],[1,1],[1,2],[1,3],[1,4],[3,0],[3,1],[3,3],[4,0]]
+        //[[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
     }
 }
