@@ -39,21 +39,32 @@ public class number23 {
         return resDump.next;
     }
 
+    //使用分治算法：虽然和两两合并的合并次数一样，但时间复杂度不一样。归并明显快与两两合并。
     public ListNode mergeKLists2(ListNode[] lists) {
         int length = lists.length;
         if (length == 0) {
             return null;
         }
-        ListNode resDump = new ListNode(-1);
-        ListNode pre = resDump;
         while (length > 1){
             int k = (length + 1) / 2;
             for (int i = 0; i < length / 2; i++) {
-                resDump.next = mergeTwoLists(lists[i], lists[i + k]);
+                lists[i] = mergeTwoLists(lists[i], lists[i + k]);
             }
             length = k;
         }
-        return resDump.next;
+        return lists[0];
+    }
+
+    //两两合并的时间复杂度太高。
+    public ListNode mergeKLists3(ListNode[] lists) {
+        int length = lists.length;
+        if (length == 0) {
+            return null;
+        }
+        for (int i = 1; i < length; i++) {
+            lists[0] = mergeTwoLists(lists[0], lists[i]);
+        }
+        return lists[0];
     }
 
     private ListNode mergeTwoLists(ListNode l1, ListNode l2) {
