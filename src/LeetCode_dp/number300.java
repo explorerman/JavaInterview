@@ -1,7 +1,7 @@
 package LeetCode_dp;
 
 import java.util.Arrays;
-
+//lis最长上升子序列
 public class number300 {
     public int lengthOfLIS(int[] nums) {
        int res = 0;
