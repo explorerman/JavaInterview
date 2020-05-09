@@ -3,8 +3,9 @@ package LeetCode_byte_dance;
 import java.util.ArrayList;
 import java.util.List;
 
-//复原ip
-public class number93 {
+//复原IP
+
+public class number93_1 {
     public List<String> restoreIpAddresses(String s) {
         List<String> res = new ArrayList<>();
         StringBuilder cur = new StringBuilder();
@@ -14,13 +15,12 @@ public class number93 {
 
     // depth控制递归深度
     public void backtrace(String s, int index, StringBuilder cur, int depth, List<String> res) {
-        int len = cur.length();
         if(depth == 4) {
             // 如果字符串都取完了，可以加入结果集
             if(index == s.length()) {
                 // 移除掉最后的"."
                 cur.deleteCharAt(cur.length() - 1);
-                res.add(cur.toString());
+                res.add(new StringBuilder(cur).toString());
             }
             return;
         }
@@ -35,7 +35,6 @@ public class number93 {
             cur.append(s.substring(index, index + i));
             cur.append(".");
             backtrace(s, index + i, cur, depth + 1, res);
-            cur.setLength(len);
         }
     }
 }
