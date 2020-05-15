@@ -92,6 +92,8 @@ public class Singleton {
 
 volatile：保证可见性，有序性，但不保证原子性，因为语句不一定是原子的，类如：add(找)
 
+[synchronized锁字符串印发的坑](https://www.cnblogs.com/xrq730/p/6662232.html#top)
+
 ## JavaIO
 
 BIO,NIO，AIO
@@ -103,3 +105,5 @@ hashmap，concurrenthashmap,weakhashmap,linkedlist
 ## JVM
 
 内存分布，垃圾收集器，垃圾收集算法，字节码，内存和工作内存。
+
+[Java对象在内存中的存储结构](https://blog.csdn.net/yiqiu3812/article/details/90610179?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
