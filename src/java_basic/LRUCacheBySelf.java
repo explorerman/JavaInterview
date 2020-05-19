@@ -10,7 +10,7 @@ import java.util.Set;
  * @package
  * @file ${fileName.java}
  * @createTime: 创建时间: 2020/4/24 14:48
- * @title 标题: 实现一个基本的LRU,不使用API
+ * @title 标题: 实现一个基本的LRU,不使用API  使用头删，尾增的方法，与redis的方法刚好相反
  * @module 模块: 模块名称
  * @reviewer 审核人
  * @history 修订历史（历次修订内容、修订人、修订时间等）
