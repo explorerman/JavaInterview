@@ -107,3 +107,38 @@ hashmap，concurrenthashmap,weakhashmap,linkedlist
 内存分布，垃圾收集器，垃圾收集算法，字节码，内存和工作内存。
 
 [Java对象在内存中的存储结构](https://blog.csdn.net/yiqiu3812/article/details/90610179?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+
+Jvm是什么时候申请os的内存的？
+
+malloc备用使用的是mmap，如果你用strace跟踪jvm的话，你会发现每次jvm启动都会申请一定的内存
+
+```text
+sudo strace -f java -Xms8192m -XX:NativeMemoryTracking=summary foo.java
+```
+
+```java
+import java.util.Vector;
+
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        // Prints "Hello, World" to the terminal window.
+        System.out.println("Hello, World");
+        Vector v = new Vector();
+        while (true)
+        {
+            byte b[] = new byte[1048576];
+            v.add(b);
+            Runtime rt = Runtime.getRuntime();
+            System.out.println( "free memory: " + rt.freeMemory() );
+        }
+    }
+
+}
+```
+
+JVM只会在你需要的时候向操作系统申请内存，也就是懒加载
+
+```text
+mmap(NULL, 134217728, PROT_NONE, MAP_PRIVATE|MAP_ANONYMOUS|MAP_NORESERVE, -1, 0) = 0x7f0eb26ca000
+```

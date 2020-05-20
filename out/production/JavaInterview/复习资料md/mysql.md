@@ -57,3 +57,9 @@ buffer poll为了解决从磁盘读写慢，使用buffer poll在内存中申请�
 隔离级别，ACID事务等次之
 
 redo,undo日志。
+
+[ 向mysql插入100w条数据，存储过程 ](https://cloud.tencent.com/developer/article/1534007)
+
+[mysql使用存储过程插入千万级数据如何提升效率](https://blog.csdn.net/youcheng_ge/article/details/77728189)
+
+[mysql中为什么不要使用存储过程](https://blog.csdn.net/aoerqileng/article/details/79731713)
