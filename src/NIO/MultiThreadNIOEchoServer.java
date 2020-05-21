@@ -179,9 +179,9 @@ public class MultiThreadNIOEchoServer {
         // Loop forever.
         for (; ; ) {
             selector.select();  //该方法是阻塞的，返回的结果是已经准备就绪的SelectionKey数量
-//            if(selector.selectNow()==0){
-//                continue;
-//            }
+            if (selector.selectNow() == 0) {
+                continue;
+            }
             Set readyKeys = selector.selectedKeys();
             Iterator i = readyKeys.iterator();
             long e = 0;
