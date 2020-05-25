@@ -1,5 +1,7 @@
 # hashmap
 
+
+
 ## 1.7版本
 
 
@@ -8,12 +10,14 @@
 
 # concurrentHashmap
 
+1.7 ConcurrentHashMap 使用了分段锁的思想提高了并发的的访问量,就是使用很多把锁,每一个segment代表了一把锁,每一段只能有一个线程获取锁;但是segment的数量初始化了,就不能修改,所以这也代表了并发的不能修改,这也是1.7的一个局限性.从get方法可以看出使用了UNSAFE的一些方法和volatile关键字来代替锁,提高了并发性.在size和containsValue这些方法提供一种尝试思想,先不加锁尝试统计,如果其中没有变化就返回,有变化接着尝试,达到尝试次数再加锁,这样也避免了立即加锁对并发的影响.
+
+1.8变化很大，数据结构上变成了：数组+链表+红黑树的结构，锁变成了Synchronized锁，1.8中的锁是随着数组的长度发生变化的，提升了并发的数量的灵活性，在1.8中没有了segments这些东西了，每次锁住的数组中的一个元素或者桶（其实也就是数组或者树的头结点），扩容策略和size统计也发生了变化。
+
 ## 1.7版本
 
 1.7版本下，concurrentHashmap的实现和hashmap思想一样，差别就是concurrenthashmap在hashmap拉链的上层增加了一个继承了ReentrantLock的segment，segment下面使用拉链，多个线程可以同时访问不同分段锁上的桶(默认也是16)，从而使其并发度更高（并发度就是 Segment 的个数）
 
 结构图如下:
-
-![img](https://upload-images.jianshu.io/upload_images/2184951-af57d9d50ae9f547.png?imageMogr2/auto-orient/strip|imageView2/2/w/767/format/webp)
 
 ## 1.8版本
