@@ -23,7 +23,7 @@ public class testThreadPool {
     }
     public static void main(String[] args) {
         ThreadPoolExecutorExapmle.threadPoolExecutor1.execute(new count());
-        System.out.println(ThreadPoolExecutorExapmle.threadPoolExecutor1.getActiveCount());
+//        System.out.println(ThreadPoolExecutorExapmle.threadPoolExecutor1.getActiveCount());
         System.out.println(ThreadPoolExecutorExapmle.threadPoolExecutor1.getThreadFactory().getClass().getName());
     }
 }
