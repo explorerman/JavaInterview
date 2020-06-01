@@ -24,7 +24,7 @@ public class formal05 {
 
     private  ListNode reverse(ListNode head) {
         ListNode pre = null;
-        while (head != null){
+        while (head != null ){
             ListNode next = head.next;
             head.next = pre;
             pre = head;

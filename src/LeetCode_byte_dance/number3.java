@@ -1,12 +1,11 @@
 package LeetCode_byte_dance;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 //无重复字符的最长子串
 //滑动窗口的解法
+//"abcabcbb"
 public class number3 {
     public int lengthOfLongestSubstring(String s) {
         // 哈希集合，记录每个字符是否出现过
