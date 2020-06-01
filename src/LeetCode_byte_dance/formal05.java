@@ -11,7 +11,7 @@ public class formal05 {
             slow = slow.next;
         }
         ListNode right = reverse(slow.next);
-        slow.next = null;
+        slow.next = null; //此时slow已经指向了right的最后的节点
         ListNode left = head;
         while(right != null){
             ListNode next = right.next;
