@@ -15,7 +15,7 @@ package leetcode_list;
 public class number21 {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode dummy = new ListNode(-1);
-        ListNode  pre =  dummy;
+        ListNode  pre = dummy;
         while (l1 != null && l2 != null) {
             if (l1.val < l2.val) {
                 pre.next = l1;
