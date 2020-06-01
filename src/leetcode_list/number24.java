@@ -4,7 +4,7 @@ public class number24 {
     //双指针写法，一个当前指针，两个前后指针，重点在看移动节点的步长
     public ListNode swapPairs(ListNode head) {
         ListNode dummy = new ListNode(-1);
-        ListNode pre = dummy;
+        ListNode  pre = dummy;
         dummy.next = head;
         if(dummy.next == null) return null;
         while (pre.next != null && pre.next.next != null) {
