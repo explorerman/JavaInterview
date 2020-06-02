@@ -13,9 +13,9 @@ public class number15 {
             int twoSum = 0 - nums[i];
             for (int j = i + 1; j < nums.length; j++) {
                 int temp = twoSum - nums[j];
+                level.add(nums[i]);
                 if(level.contains(temp)){
-                    level.add(nums[i]);
-                    res.add(level);
+                    level.add(nums[j]);
                 }
                 level.add(nums[j]);
             }
