@@ -12,6 +12,7 @@ package LeetCode_byte_dance;
  * @reviewer 审核人
  * @history 修订历史（历次修订内容、修订人、修订时间等）
  */
+//二分查找，判断mid和最右边元素的大小，如大于最右边，则说明左边有序，小于最右边，说明，右边有序
 public class number33_1 {
     public int search(int[] nums, int target) {
         if(nums.length < 0) return -1;
@@ -26,7 +27,7 @@ public class number33_1 {
                     right = mid - 1;
                 }
             }else {
-                if(nums[left] >= target && nums[mid] > target){
+                if(nums[left] <= target && nums[mid] > target){
                     right = mid - 1;
                 }else {
                     left = mid + 1;
