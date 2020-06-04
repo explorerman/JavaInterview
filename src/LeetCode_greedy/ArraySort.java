@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 //重写排序sort
+//二维数组排序
 public class ArraySort {
     public static void sort(int[][] ob, int[] order) {
 //        Arrays.sort(ob, new Comparator<Object>() {
