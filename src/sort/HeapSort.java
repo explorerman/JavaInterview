@@ -27,6 +27,7 @@ public class HeapSort<T extends Comparable<T>> extends Sort<T> {
         System.out.println(nums);
     }
 
+    //下沉
     private void sink(T[] nums, int k, int N) {
         while (2 * k <= N) {
             int j = 2 * k;
