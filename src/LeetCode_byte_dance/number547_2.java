@@ -15,7 +15,7 @@ package LeetCode_byte_dance;
 
 public class number547_2 {
     public int findCircleNum(int[][] M) {
-
+        return 0;
     }
 
 }
