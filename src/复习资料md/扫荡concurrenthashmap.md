@@ -1,0 +1,4 @@
+为什么会有concurrenthashmap，有Collections.synchronizedMap，还要在实现concurrenthashmap
+
+首先，hashmap在多线程下，进行resize的时候，可能会出现死循环，其次synchronizedMap效率太低，他其实构造了一个synchronizedMap，里面是使用声明一个object的互斥量来保证同步的，效率比较低。
+
