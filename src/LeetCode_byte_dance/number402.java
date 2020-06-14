@@ -29,20 +29,20 @@ public class number402 {
             res.add(cur);
         }
         //如果还有k，则直接把后面的元素删除
-        for(int i=0; i<k; ++i) {
+        for (int i = 0; i < k; ++i) {
             res.remove(res.size() - 1);
         }
-        while (!res.isEmpty() && res.get(0) == '0'){
+        while (!res.isEmpty() && res.get(0) == '0') {
             res.remove(0);
         }
         StringBuilder sb = new StringBuilder();
-        for (char cur : res){
+        for (char cur : res) {
             sb.append(cur);
         }
         return res.isEmpty() ? "0" : sb.toString();
     }
 
     public static void main(String[] args) {
-        removeKdigits("1432219",3);
+        removeKdigits("1432219", 3);
     }
 }
