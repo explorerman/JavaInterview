@@ -30,8 +30,8 @@ public class number200 {
         visited[x][y] = true;
         for (int i = 0; i != 4; i++) {  //四个方向遍历
             DFS(grid, visited, x + px[i], y + py[i]);
-//            visited[x][y] = false;
         }
+//            visited[x][y] = false;
     }
 
 }
