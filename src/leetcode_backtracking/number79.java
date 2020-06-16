@@ -28,6 +28,7 @@ public class number79 {
         if(index == word.length() - 1) return true;
         visited[i][j] = true;
         for (int k = 0; k != 4; k++) {
+            //注意：这儿的index不能写成index++;必须写成index+1
             if(DFS(board, i + px[k], j + py[k], visited, word, index+1)) return true;
 
         }

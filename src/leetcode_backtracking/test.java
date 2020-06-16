@@ -6,12 +6,13 @@ public class test {
     }
 
     private static void DFS(int index) {
-        if(index == 6){
-            System.out.println(index);
+        System.out.println(index);
+        if(index == 2){
             return;
         }
-        for (int i = 0; i != 4 ; i++) {
-            DFS(index + 1);
+        for (int i = 0; i < 3 ; i++) {
+            if(i == 2) break;
+            DFS(++index);
         }
 
     }
