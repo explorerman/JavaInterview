@@ -27,6 +27,7 @@ public class ThreadLocalTest2 {
 		private int mode = 0;
 
 		public RndTask(int mode) {
+
 			super();
 			this.mode = mode;
 		}
