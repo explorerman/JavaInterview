@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 //字符串的排列
 public class number567 {
+    //    s1 = "ab" s2 = "eidbaooo"
     public boolean checkInclusion(String s1, String s2) {
         HashMap<Character, Integer> need = new HashMap<>();
         HashMap<Character, Integer> window = new HashMap<>();
