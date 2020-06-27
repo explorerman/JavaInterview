@@ -12,6 +12,7 @@ public class number215 {
         k = nums.length -k;
         for (int i = nums.length - 1; i >= 0 ; --i) {
             if(i == k){
+                System.out.println(nums[i]);
                 return nums[i];
             }else{
                 continue;
@@ -21,6 +22,6 @@ public class number215 {
     }
 
     public static void main(String[] args) {
-        new number215().findKthLargest(new int[]{3,2,1,5,6,4},2);
+        new number215().findKthLargest(new int[]{1,2,2,3,5,5,6},3);
     }
 }

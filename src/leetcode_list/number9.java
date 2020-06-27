@@ -33,6 +33,8 @@ public class number9 {
         if(source == res) return true;
         return false;
     }
+
+
     public static void main(String[] args) {
         System.out.println(isPalindrome3(121));
     }
