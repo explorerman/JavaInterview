@@ -4,6 +4,7 @@ package LeetCode_dp;
 public class number1143 {
     //暴力破解
     //text1 = "abcde", text2 = "ace"
+    //该方法有缺陷，只能通过部分测试用例
     public static int longestCommonSubsequence(String text1, String text2) {
         StringBuilder sb = new StringBuilder();
         final char[] str1 = text1.toCharArray();
