@@ -41,4 +41,14 @@ public class number547_1 {
         return res;
     }
 
+    public static void main(String[] args) {
+        int[][] M = new int[][]{
+                {1,1,0},
+                {1,1,0},
+                {0,0,1}
+        };
+        new number547_1().findCircleNum(M);
+    }
+
+
 }

@@ -14,6 +14,6 @@ package LeetCode_array;
  */
 public class number42 {
     public int trap(int[] height) {
-
+        return 0;
     }
 }
