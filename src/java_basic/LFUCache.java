@@ -1,7 +1,5 @@
 package java_basic;
 
-import jdk.jfr.events.FileReadEvent;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +21,6 @@ public class LFUCache {
     class DLinkedNode{
         Node head;
         Node tail;
-        int count;
         public DLinkedNode(){
             head = new Node();
             tail = new Node();
@@ -42,6 +39,7 @@ public class LFUCache {
             node.prev.next = node.next;
             node.next.prev = node.prev;
         }
+        //移除尾部节点
         private Node removeTail() {
             Node res = tail.prev;
             removeNode(res);
