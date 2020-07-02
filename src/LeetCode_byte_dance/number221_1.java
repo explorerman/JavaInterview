@@ -15,34 +15,23 @@ package LeetCode_byte_dance;
 public class number221_1 {
     public int maximalSquare(char[][] matrix) {
         int row = matrix.length;
+        if(row <= 0) return 0;
         int col = matrix[0].length;
         int maxSide = 0;
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                if (matrix[i][j] == '1') {
-                    maxSide = Math.max(maxSide, 1);
-                    int currentMaxSide = Math.min(row - i, col - j);
-                    for (int k = 1; k < currentMaxSide; k++) {
-                        if (matrix[i + k][j + k] == '0') {
-                            break;
-                        }
-                        boolean flag = true;
-                        for (int m = 0; m < k; m++) {
-                            if (matrix[i + k][j + m] == '0' || matrix[i + m][j + k] == '0'){
-                                flag = false;
-                                break;
-                            }
-                        }
-                        if(flag){
-                            maxSide = Math.max(maxSide, k + 1);
-                        }else {
-                            break;
-                        }
+        int[][] dp = new int[row][col];
+
+        for (int i = 0; i < row; i++){
+            for (int j = 0; j < col; j++){
+                if(matrix[i][j] == '1'){
+                    if(i == 1 || j == 1){
+                        dp[i][j] = 1;
+                    }else{
+                        dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
                     }
+                    maxSide = Math.max(maxSide, dp[i][j]);
                 }
             }
         }
-        int maxSquare = maxSide * maxSide;
-        return maxSquare;
+        return maxSide * maxSide;
     }
 }
