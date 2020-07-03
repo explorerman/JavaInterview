@@ -1,6 +1,5 @@
 package java_basic;
 
-import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
