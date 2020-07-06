@@ -63,7 +63,7 @@ bash: bourne again shell
 
 `echo`：把内容重定向到指定的文件中 ，有则打开，无则创建
 
-`管道命令 |` ：将前面的结果给后面的命令，例如：`ls -la | wc`，将ls的结果加油wc命令来统计字数
+`管道命令 |` ：将前面的结果给后面的命令，例如：`ls -la | wc`，将ls的结果加到wc命令来统计字数
 
 `重定向 > 是覆盖模式，>> 是追加模式`，例如：`echo "Java3y,zhen de hen xihuan ni" > qingshu.txt`把左边的输出放到右边的文件里去
 
