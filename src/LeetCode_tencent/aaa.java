@@ -12,5 +12,6 @@ public class aaa {
                 .limit(n)
                 .map(t -> t[0])
                 .max(comparing(Integer::intValue));
+        return 0;
     }
 }
