@@ -1,14 +1,13 @@
 package java_basic;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
  * @author 李杰
  * @version 1.0
  * @Description lru的实现方式
- * 继承LinkedHashMap，构造函数中将accessOrder设置为true，重写removeEldestEntry
+ * hashmap+双向链表,头插尾删
  * @package
  * @file ${fileName.java}
  * @createTime: 创建时间: 2020/4/24 12:34
