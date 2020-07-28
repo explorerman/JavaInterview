@@ -1,6 +1,6 @@
 # [一、数据类型](https://cyc2018.github.io/CS-Notes/#/notes/Java 基础?id=一、数据类型)
 
-## [基本类型](https://cyc2018.github.io/CS-Notes/#/notes/Java 基础?id=基本类型)
+## 基本类型
 
 - byte/8
 - char/16
@@ -13,10 +13,13 @@
 
 boolean 只有两个值：true、false，可以使用 1 bit 来存储，但是具体大小没有明确规定。JVM 会在编译时期将 boolean 类型的数据转换为 int，使用 1 来表示 true，0 表示 false。JVM 支持 boolean 数组，但是是通过读写 byte 数组来实现的。
 
+int 在C和C++的占用2个字节，在java中占4个字节
+char在C和C+中占一个字节，java中占2个字节
+
 - [Primitive Data Types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
 - [The Java® Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se8/jvms8.pdf)
 
-## [包装类型](https://cyc2018.github.io/CS-Notes/#/notes/Java 基础?id=包装类型)
+## 包装类型
 
 基本类型都有对应的包装类型，基本类型与其对应的包装类型之间的赋值使用自动装箱与拆箱完成。
 
@@ -27,7 +30,7 @@ int y = x;         // 拆箱 调用了 X.intValue()Copy to clipboardErrorCopied
 
 - [Autoboxing and Unboxing](https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html)
 
-## [缓存池](https://cyc2018.github.io/CS-Notes/#/notes/Java 基础?id=缓存池)
+## 缓存池
 
 new Integer(123) 与 Integer.valueOf(123) 的区别在于：
 
@@ -109,9 +112,9 @@ System.out.println(m == n); // trueCopy to clipboardErrorCopied
 
 [StackOverflow : Differences between new Integer(123), Integer.valueOf(123) and just 123](https://stackoverflow.com/questions/9030817/differences-between-new-integer123-integer-valueof123-and-just-123)
 
-# [二、String](https://cyc2018.github.io/CS-Notes/#/notes/Java 基础?id=二、string)
+# 二、String
 
-## [概览](https://cyc2018.github.io/CS-Notes/#/notes/Java 基础?id=概览)
+## 概览
 
 String 被声明为 final，因此它不可被继承。(Integer 等包装类也不能被继承）
 

@@ -14,6 +14,6 @@ package leetcode_tree;
  */
 public class number958 {
     public boolean isCompleteTree(TreeNode root) {
-
+        return false;
     }
 }

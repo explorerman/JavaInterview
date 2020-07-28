@@ -16,6 +16,6 @@ import java.util.List;
  */
 public class number120 {
     public int minimumTotal(List<List<Integer>> triangle) {
-
+        return 0;
     }
 }
