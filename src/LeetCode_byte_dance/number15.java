@@ -14,7 +14,7 @@ public class number15 {
         for (int i = 0; i < len - 2; i++) {
             //当遍历到正数的时候，直接break，因为数组已经有序，所以此时为正数，后续都是正数，不可能相加为0
             if (nums[i] > 0) break;
-            //重复跳过，如果方法是从第二数开始的，如果和前面的数字想到，就跳过，因为不想把相同的数字fix两次
+            //重复跳过，如果方法是从第二数开始的，如果和前面的数字相同，就跳过，因为不想把相同的数字fix两次
             if (i > 0 && nums[i] == nums[i - 1]) continue;
             int target = 0 - nums[i];
             int left = i + 1, right = len - 1;
