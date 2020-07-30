@@ -25,12 +25,15 @@ public class number128 {
         int res = 1;
         //冒泡排序比较
         for(int i = 1; i < len; i++){
+            //判断间隔差距只有1的情况
             if(nums[i] - nums[i - 1] == 1){
                 res++;
-            }else if(nums[i] == nums[i - 1]){
+            }else if(nums[i] == nums[i - 1]){ //如果前后相等，则跳过
                continue;
             }else{
+                //递增序列开始断开，保存当前的长度
                 max = Math.max(max, res);
+                //重新开始计算下一段的长度
                 res = 1;
             }
         }
