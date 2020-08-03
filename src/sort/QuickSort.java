@@ -64,6 +64,26 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
         return j;
     }
 
+    // 快排切分，返回下标j，使得比nums[j]小的数都在j的左边，比nums[j]大的数都在j的右边。快排切分的方法
+    private int partition(int[] nums, int lo, int hi) {
+        int v = nums[lo];
+        int i = lo, j = hi + 1;
+        while (true) {
+            while (++i <= hi && nums[i] < v);
+            while (--j >= lo && nums[j] > v);
+            if (i >= j) {
+                break;
+            }
+            int t = nums[j];
+            nums[j] = nums[i];
+            nums[i] = t;
+        }
+        nums[lo] = nums[j];
+        nums[j] = v;
+        return j;
+    }
+
+
     public static void main(String[] args) {
         new QuickSort<Integer>().sort(new Integer[]{3,1,6,2,5,8,4,7});
 //        System.out.println(new QuickSort<Integer>().less(1,1));

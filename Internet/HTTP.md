@@ -4,17 +4,17 @@
 
 URI 包含 URL 和 URN。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/8441b2c4-dca7-4d6b-8efb-f22efccaf331.png)
+![img](HTTP.assets/8441b2c4-dca7-4d6b-8efb-f22efccaf331.png)
 
 ### 请求和响应报文
 
 #### 1.请求报文
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/HTTP_RequestMessageExample.png)
+![img](HTTP.assets/HTTP_RequestMessageExample.png)
 
 #### 2.响应报文
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/HTTP_ResponseMessageExample.png)
+![img](HTTP.assets/HTTP_ResponseMessageExample.png)
 
 ## 二、HTTP方法
 
@@ -101,7 +101,7 @@ DELETE /file.html HTTP/1.1
 CONNECT www.example.com:443 HTTP/1.1
 ```
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/dc00f70e-c5c8-4d20-baf1-2d70014a97e3.jpg)
+![img](HTTP.assets/dc00f70e-c5c8-4d20-baf1-2d70014a97e3.jpg)
 
 ### TRACE
 
@@ -233,7 +233,7 @@ CONNECT www.example.com:443 HTTP/1.1
 
 ### 连接管理
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/HTTP1_x_Connections.png)
+![img](HTTP.assets/HTTP1_x_Connections.png)
 
 #### 1.短连接与长连接
 
@@ -560,13 +560,13 @@ HTTP/1.1 使用虚拟主机技术，使得一台服务器拥有多个域名，�
 
 - 用户察觉得到正向代理的存在。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/a314bb79-5b18-4e63-a976-3448bffa6f1b.png)
+![img](HTTP.assets/a314bb79-5b18-4e63-a976-3448bffa6f1b.png)
 
 
 
 - 而反向代理一般位于内部网络中，用户察觉不到。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/2d09a847-b854-439c-9198-b29c65810944.png)
+![img](HTTP.assets/2d09a847-b854-439c-9198-b29c65810944.png)
 
 #### 2.网关
 
@@ -588,7 +588,7 @@ HTTPS 并不是新协议，而是让 HTTP 先和 SSL（Secure Sockets Layer）�
 
 通过使用 SSL，HTTPS 具有了加密（防窃听）、认证（防伪装）和完整性保护（防篡改）。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/ssl-offloading.jpg)
+![img](HTTP.assets/ssl-offloading.jpg)
 
 ### 加密
 
@@ -599,7 +599,7 @@ HTTPS 并不是新协议，而是让 HTTP 先和 SSL（Secure Sockets Layer）�
 - 优点：运算速度快；
 - 缺点：无法安全地将密钥传输给通信方。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/7fffa4b8-b36d-471f-ad0c-a88ee763bb76.png)
+![img](HTTP.assets/7fffa4b8-b36d-471f-ad0c-a88ee763bb76.png)
 
 #### 2.非对称秘钥加密
 
@@ -612,13 +612,13 @@ HTTPS 并不是新协议，而是让 HTTP 先和 SSL（Secure Sockets Layer）�
 - 优点：可以更安全地将公开密钥传输给通信发送方；
 - 缺点：运算速度慢。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/39ccb299-ee99-4dd1-b8b4-2f9ec9495cb4.png)
+![img](HTTP.assets/39ccb299-ee99-4dd1-b8b4-2f9ec9495cb4.png)
 
 #### 3.HTTPS采用的加密方式
 
 HTTPS 采用混合的加密机制，使用非对称密钥加密用于传输对称密钥来保证传输过程的安全性，之后使用对称密钥加密进行通信来保证通信过程的效率。（下图中的 Session Key 就是对称密钥）
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/How-HTTPS-Works.png)
+![img](HTTP.assets/How-HTTPS-Works.png)
 
 ### 认证
 
@@ -630,7 +630,7 @@ HTTPS 采用混合的加密机制，使用非对称密钥加密用于传输对�
 
 进行 HTTPS 通信时，服务器会把证书发送给客户端。客户端取得其中的公开密钥之后，先使用数字签名进行验证，如果验证通过，就可以开始通信了。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/2017-06-11-ca.png)
+![img](HTTP.assets/2017-06-11-ca.png)
 
 ### 完整性保护
 
@@ -659,7 +659,7 @@ HTTP/1.x 实现简单是以牺牲性能为代价的：
 
 HTTP/2.0 将报文分成 HEADERS 帧和 DATA 帧，它们都是二进制格式的。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/86e6a91d-a285-447a-9345-c5484b8d0c47.png)
+![img](HTTP.assets/86e6a91d-a285-447a-9345-c5484b8d0c47.png)
 
 在通信过程中，只会有一个 TCP 连接存在，它承载了任意数量的双向数据流（Stream）。
 
@@ -667,13 +667,13 @@ HTTP/2.0 将报文分成 HEADERS 帧和 DATA 帧，它们都是二进制格式�
 - 消息（Message）是与逻辑请求或响应对应的完整的一系列帧。
 - 帧（Frame）是最小的通信单位，来自不同数据流的帧可以交错发送，然后再根据每个帧头的数据流标识符重新组装。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/af198da1-2480-4043-b07f-a3b91a88b815.png)
+![img](HTTP.assets/af198da1-2480-4043-b07f-a3b91a88b815.png)
 
 ### 服务器推送
 
 HTTP/2.0 在客户端请求一个资源时，会把相关的资源一起发送给客户端，客户端就不需要再次发起请求了。例如客户端请求 page.html 页面，服务端就把 script.js 和 style.css 等与之相关的资源一起发给客户端。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e3f1657c-80fc-4dfa-9643-bf51abd201c6.png)
+![img](HTTP.assets/e3f1657c-80fc-4dfa-9643-bf51abd201c6.png)
 
 ### 首部压缩
 
@@ -683,7 +683,7 @@ HTTP/2.0 要求客户端和服务器同时维护和更新一个包含之前见�
 
 不仅如此，HTTP/2.0 也使用 Huffman 编码对首部字段进行压缩。
 
-![img](https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/_u4E0B_u8F7D.png)
+![img](HTTP.assets/_u4E0B_u8F7D.png)
 
 ## 八、HTTP/1.1新特性
 
