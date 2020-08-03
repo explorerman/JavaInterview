@@ -76,6 +76,8 @@ Lettuce：基于Netty框架的事件驱动的通信层，其方法调用是异�
 
 [参考链接](https://www.jianshu.com/p/9c798d263037)
 
+[参考链接2](https://www.cnblogs.com/williamjie/p/11287292.html)
+
 ## es
 
 简单介绍一下es，这边的业务场景是存列表，存表单数据。原理就是倒排索引，准备一下倒排索引的概念。
