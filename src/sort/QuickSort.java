@@ -65,6 +65,14 @@ public class QuickSort<T extends Comparable<T>> extends Sort<T> {
     }
 
     // 快排切分，返回下标j，使得比nums[j]小的数都在j的左边，比nums[j]大的数都在j的右边。快排切分的方法
+
+    /**
+     * 分三步：
+     * 第一步：定义哨兵，一般选择左边第一个元素
+     * 第二步：从数组左边找比哨兵小的第一个元素，右边找比元素大的第一个元素，找到后交换值。
+     * 不断进行这个过程，就可以保证左指针 i 的左侧元素都不大于切分元素，右指针 j 的右侧元素都不小于切分元素。当两个指针相遇时，将切分元素 a[l] 和 a[j] 交换位置。
+     * 第三步：将哨兵与j位置的元素交换后返回
+     */
     private int partition(int[] nums, int lo, int hi) {
         int v = nums[lo];
         int i = lo, j = hi + 1;
