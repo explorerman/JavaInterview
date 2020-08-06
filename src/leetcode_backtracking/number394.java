@@ -14,6 +14,6 @@ package leetcode_backtracking;
  */
 public class number394 {
     public String decodeString(String s) {
-
+        return "";
     }
 }

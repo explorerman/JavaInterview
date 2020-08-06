@@ -31,8 +31,8 @@ public class number20 {
         }else return a == '[' && b == ']';
     }
 
-//    使用hashmap保存匹配的字符串：
-private static final Map<Character, Character> map = new HashMap<Character, Character>(){
+    //    使用hashmap保存匹配的字符串：
+    private static final Map<Character, Character> map = new HashMap<Character, Character>(){
     {
         put('{','}'); put('[',']'); put('(',')');
     }
