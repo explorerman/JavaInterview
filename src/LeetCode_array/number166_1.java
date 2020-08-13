@@ -22,7 +22,7 @@ public class number166_1 {
             return "0";
         }
         StringBuilder fraction = new StringBuilder();
-        //如果除数和被除数，有一个负数，则前面加“-”
+        //如果除数和被除数，有一个负数，则前面加“-”,等价于true为1，false为0
         if(numerator < 0 ^ denominator < 0){
             fraction.append("-");
         }
@@ -49,5 +49,19 @@ public class number166_1 {
             remainder %= divisor;
         }
         return fraction.toString();
+    }
+
+    public static void main(String[] args) {
+        int a = -1, b = -1;
+        if(a < 0 ^ b < 0){
+            System.out.println(true);
+        }else {
+            System.out.println(false);
+        }
+        boolean aa = false;
+        boolean bb = false;
+        if(aa ^ bb){
+            System.out.println(true);
+        }
     }
 }
