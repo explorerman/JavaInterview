@@ -25,27 +25,37 @@ public class number670 {
 //    98368
 //    98863
 
+    //暴力破解，两两比较
     public int maximumSwap(int num) {
-        String nums = String.valueOf(num);
-        final char[] numsChars = nums.toCharArray();
-        int sentinel = 0;
-        for (int i = 1; i < numsChars.length; i++) {
-            if(numsChars[i] > numsChars[sentinel]){
-                sentinel = i;
+        if(num < 10) return num;
+        String strNum = String.valueOf(num);
+        final char[] chars = strNum.toCharArray();
+        for (int i = 0; i < chars.length; i++)
+            for (int j = i + 1; j < chars.length; j++) {
+                //两两交换
+                swap(chars, i, j);
+                //交换后的字符串在赚为数字比较
+                int temp = toInt(chars);
+                //如果大于当前的数字，则替换为大的数
+                if (temp > num) num = temp;
+                //把字符串恢复到交换前
+                swap(chars, i,j);
             }
+        return num;
+    }
+
+    private int toInt(char[] chars) {
+        String res = "";
+        for (int i = 0; i < chars.length; i++) {
+            res += chars[i];
         }
-        if(numsChars[0] == numsChars[sentinel]){
-            return num;
-        }else {
-            char temp = numsChars[0];
-            numsChars[0] = numsChars[sentinel];
-            numsChars[sentinel] = temp;
-            String res = "";
-            for (int i = 0; i < numsChars.length; i++) {
-                res += numsChars[i];
-            }
-            return Integer.valueOf(res);
-        }
+        return Integer.valueOf(res);
+    }
+
+    private void swap(char[] chars, int i, int j) {
+        char temp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = temp;
     }
 
     public static void main(String[] args) {

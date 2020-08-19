@@ -14,6 +14,6 @@ package leetcode_backtracking;
  */
 public class number1254 {
     public int closedIsland(int[][] grid) {
-
+        return 0;
     }
 }

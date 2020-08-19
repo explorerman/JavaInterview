@@ -7,7 +7,7 @@ package java_basic;
  * @package
  * @file ${fileName.java} number622
  * @createTime: 创建时间: 2020/6/9 10:05
- * @title 标题: 用数组实现一个循环队列    设计一个循环队列
+ * @title 标题: 用数组实现一个循环队列    设计一个循环队列 number622
  * 用数组实现一个循环队列，进阶:在上面的基础上实现一个无锁的支持并发的队列
  * @module 模块: 模块名称
  * @reviewer 审核人
