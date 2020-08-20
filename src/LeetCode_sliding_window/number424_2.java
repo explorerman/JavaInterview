@@ -17,6 +17,7 @@ import java.util.Map;
  */
 public class number424_2 {
     //s = "AABABBA", k = 1
+    //关键部分是：求：滑动窗口内中出现次数最大的字符+k 的最大值
     public int characterReplacement(String s, int k) {
         //max用于存结果,cur用来统计历史字母出现最多的个数
         int max = 0, cur = 0;
@@ -29,7 +30,7 @@ public class number424_2 {
             cur = Math.max(cur, windows.get(rChar));
             right++;
             //表示窗口中能替换的次数不足
-            while(right - left - cur > k){
+            while(right - left - cur > k){ //如果当前字符串中的出现次数最多的字母个数+K大于串长度，那么这个串就是满足条件的
                 char lChar = s.charAt(left);
                 windows.put(lChar, windows.get(lChar) - 1);
                 left++;
