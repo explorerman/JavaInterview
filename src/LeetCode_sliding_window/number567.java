@@ -32,7 +32,7 @@ public class number567 {
             //debug输出的位置
             System.out.println("window:"+ left + right);
             //重点，根据题不同，则不同，判断左右窗口是否需要收缩
-            while (right - left >= s1.length()){
+            while (right - left >= s1.length()){ //这儿其实直接写出等于更好理解
                 if(valid == need.size()){
                     return true;
                 }
