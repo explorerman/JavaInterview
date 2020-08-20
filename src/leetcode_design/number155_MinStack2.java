@@ -1,6 +1,5 @@
-package LeetCode_others;
+package leetcode_design;
 
-import java.util.Stack;
 //最小栈，使用了链表方法，每个节点都保存了当前节点时的最小值（固定）
 public class number155_MinStack2 {
     private Node head;

@@ -23,4 +23,8 @@ public class number3 {
         }
         return res == Integer.MIN_VALUE ? 0 : res;
     }
+
+    public static void main(String[] args) {
+        new number3().lengthOfLongestSubstring("abcabcbbeeeedddfczcfdfs");
+    }
 }
