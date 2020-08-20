@@ -16,6 +16,7 @@ import java.util.Map;
  * @history 修订历史（历次修订内容、修订人、修订时间等）
  */
 public class number424_2 {
+    //s = "AABABBA", k = 1
     public int characterReplacement(String s, int k) {
         //max用于存结果,cur用来统计历史字母出现最多的个数
         int max = 0, cur = 0;
@@ -36,5 +37,9 @@ public class number424_2 {
             max = Math.max(max, right - left);
         }
         return max;
+    }
+
+    public static void main(String[] args) {
+        new number424_2().characterReplacement("AABABBA",  1);
     }
 }
