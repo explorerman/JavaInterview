@@ -39,6 +39,5 @@ public class conbination_1 {
 
     public static void main(String[] args) {
         combine("abc");
-
     }
 }
