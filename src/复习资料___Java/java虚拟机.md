@@ -269,6 +269,18 @@ HotSpot 虚拟机的 Eden 和 Survivor 大小比例默认为 8:1，保证了内�
 - 单线程与多线程：单线程指的是垃圾收集器只使用一个线程，而多线程使用多个线程；
 - 串行与并行：串行指的是垃圾收集器与用户程序交替执行，这意味着在执行垃圾收集的时候需要停顿用户程序；并行指的是垃圾收集器和用户程序同时执行。除了 CMS 和 G1 之外，其它垃圾收集器都是以串行的方式执行。
 
+### jvm的默认垃圾收集器
+
+1.7默认的垃圾收集器parallel Scavenge(新生代) + Parallel Old(老年代)
+
+1.8默认的垃圾收集器parallel Scavenge(新生代) + Parallel Old(老年代)
+
+jdk1.9,10,11默认的都是G1
+
+-XX +PrintCommandLineFlagsjvm参数可查看默认设置收集器类型
+
+-XX +PrintGCDetails 可通过打印的GC日志的新生代，老年代名称判断
+
 ### 1. Serial 收集器
 
 ![img](java%E8%99%9A%E6%8B%9F%E6%9C%BA.assets/22fda4ae-4dd5-489d-ab10-9ebfdad22ae0.jpg)
