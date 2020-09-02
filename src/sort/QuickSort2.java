@@ -3,7 +3,7 @@ package sort;
 /**
  * @author 李杰
  * @version 1.0
- * @Description 快速排序2
+ * @Description 快速排序2、
  * @package
  * @file ${fileName.java}
  * @createTime: 创建时间: 2020/6/8 16:30
