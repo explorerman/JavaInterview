@@ -1,6 +1,16 @@
 # Springboot整合API网关
 
-## 网关基本概念
+[Spring cloud gateway与zuul的比较](https://www.cnblogs.com/lgg20/p/12507845.html)
+
+[gateway与zuul的比较](https://www.cnblogs.com/javastack/p/10844649.html)
+
+[Springcloud zuul API网关服务](http://www.macrozheng.com/#/cloud/zuul?id=%e5%9c%a8pomxml%e4%b8%ad%e6%b7%bb%e5%8a%a0%e7%9b%b8%e5%85%b3%e4%be%9d%e8%b5%96)
+
+[gateway](http://www.macrozheng.com/#/cloud/gateway)
+
+[使用gateway时定义了跨域，但别的服务中重复设置了允许跨域的过滤器时，出现的不可访问问题](http://www.macrozheng.com/#/technology/gateway_cors)
+
+## 一网关基本概念
 
 ### API网关介绍
 
@@ -37,4 +47,361 @@ API 网关出现的原因是微服务架构的出现，不同的微服务一般�
 ![image-20200905153159606](Springboot%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94API%E7%BD%91%E5%85%B3.assets/image-20200905153159606.png)
 
 ​		如上图所示，Spring cloud Gateway发出请求。然后再由Gateway Handler Mapping中找到与请求相匹配 的路由，将其发送到Gateway web handler。Handler再通过指定的过滤器链将请求发送到我们实际的服 务执行业务逻辑，然后返回。
+
+### Springcloud创建API-gateway网关模块
+
+#### 1.在项目中创建API-gateway模块
+
+![image-20200906164424305](Springboot%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94API%E7%BD%91%E5%85%B3.assets/image-20200906164424305.png)
+
+#### 2.在pom.xml引入依赖
+
+```xml
+<dependencies>
+    <dependency>
+			<groupId>com.atguigu</groupId> 
+      <artifactId>common_utils</artifactId> 
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+	<dependency>
+			<groupId>org.springframework.cloud</groupId> 
+    	<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+    </dependency>
+	<dependency> 
+    	<groupId>org.springframework.cloud</groupId> 
+   	 	<artifactId>spring-cloud-starter-gateway</artifactId>
+   </dependency>
+<!--gson-->
+		<dependency> 
+      <groupId>com.google.code.gson</groupId> 
+      <artifactId>gson</artifactId>
+    </dependency>
+<!--服务调用--> 
+  <dependency>
+		<groupId>org.springframework.cloud</groupId>
+		<artifactId>spring-cloud-starter-openfeign</artifactId>
+  	</dependency>
+</dependencies>
+```
+
+#### 3.编写application.properties配置文件
+
+```properties
+# 服务端口
+server.port=8222
+# 服务名 
+spring.application.name=service-gateway
+
+# nacos服务地址 
+spring.cloud.nacos.discovery.server-addr=127.0.0.1:8848
+#使用服务发现路由 
+spring.cloud.gateway.discovery.locator.enabled=true
+#服务路由名小写 
+#spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+
+#设置路由id
+spring.cloud.gateway.routes[0].id=service-acl 
+#设置路由的uri 
+spring.cloud.gateway.routes[0].uri=lb://service-acl 
+#设置路由断言,代理servicerId为auth-service的/auth/路径 
+spring.cloud.gateway.routes[0].predicates= Path=/*/acl/**
+
+#配置service-edu服务 
+spring.cloud.gateway.routes[1].id=service-edu 
+spring.cloud.gateway.routes[1].uri=lb://service-edu 
+spring.cloud.gateway.routes[1].predicates= Path=/eduservice/**
+
+#配置service-ucenter服务 
+spring.cloud.gateway.routes[2].id=service-ucenter 
+spring.cloud.gateway.routes[2].uri=lb://service-ucenter 
+spring.cloud.gateway.routes[2].predicates= Path=/ucenterservice/**
+
+#配置service-ucenter服务 
+spring.cloud.gateway.routes[3].id=service-cms 
+spring.cloud.gateway.routes[3].uri=lb://service-cms 
+spring.cloud.gateway.routes[3].predicates= Path=/cmsservice/**
+
+spring.cloud.gateway.routes[4].id=service-msm 
+spring.cloud.gateway.routes[4].uri=lb://service-msm 
+spring.cloud.gateway.routes[4].predicates= Path=/edumsm/**
+
+spring.cloud.gateway.routes[5].id=service-order 
+spring.cloud.gateway.routes[5].uri=lb://service-order 
+spring.cloud.gateway.routes[5].predicates= Path=/orderservice/**
+
+spring.cloud.gateway.routes[6].id=service-order 
+spring.cloud.gateway.routes[6].uri=lb://service-order 
+spring.cloud.gateway.routes[6].predicates= Path=/orderservice/**
+
+spring.cloud.gateway.routes[7].id=service-oss 
+spring.cloud.gateway.routes[7].uri=lb://service-oss 
+spring.cloud.gateway.routes[7].predicates= Path=/eduoss/**
+
+spring.cloud.gateway.routes[8].id=service-statistic 
+spring.cloud.gateway.routes[8].uri=lb://service-statistic 
+spring.cloud.gateway.routes[8].predicates= Path=/staservice/**
+
+spring.cloud.gateway.routes[9].id=service-vod 
+spring.cloud.gateway.routes[9].uri=lb://service-vod 
+spring.cloud.gateway.routes[9].predicates= Path=/eduvod/**
+
+spring.cloud.gateway.routes[10].id=service-edu 
+spring.cloud.gateway.routes[10].uri=lb://service-edu 
+spring.cloud.gateway.routes[10].predicates= Path=/eduuser/**
+```
+
+**yml**文件:
+
+```xml
+server:
+  port: 8222
+spring:
+  application:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+			routes:
+			- id: SERVICE-ACL
+				uri: lb://SERVICE-ACL predicates:
+				- Path=/*/acl/** # 路径匹配
+
+			- id: SERVICE-EDU
+				uri: lb://SERVICE-EDU predicates:
+				- Path=/eduservice/** # 路径匹配
+
+			- id: SERVICE-UCENTER
+				uri: lb://SERVICE-UCENTER predicates:
+				- Path=/ucenter/** # 路径匹配
+nacos:
+  discovery:
+	server-addr: 127.0.0.1:8848
+```
+
+#### 4.编写启动类
+
+```java
+@SpringBootApplication
+public class ApiGatewayApplication {
+    public static void main(String[] args) {
+			SpringApplication.run(ApiGatewayApplication.class, args); }
+}
+```
+
+## 二网关相关配置
+
+### 网关解决跨域问题
+
+创建配置类
+
+![image-20200906170235360](Springboot%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94API%E7%BD%91%E5%85%B3.assets/image-20200906170235360.png)
+
+```java
+@Configuration
+public class CorsConfig {
+  @Bean
+	public CorsWebFilter corsFilter() {
+					CorsConfiguration config = new CorsConfiguration(); 
+    			config.addAllowedMethod("*"); 
+    			config.addAllowedOrigin("*"); 
+    			config.addAllowedHeader("*");
+    
+					UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource(new PathPatternParser());
+					source.registerCorsConfiguration("/**", config); 
+    			return new CorsWebFilter(source);
+		} 
+}
+```
+
+### 全局Filter，统一处理会员登录与外部不允许访问的服务
+
+![image-20200906170441433](Springboot%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94API%E7%BD%91%E5%85%B3.assets/image-20200906170441433.png)
+
+```java
+import com.google.gson.JsonObject;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain; 
+import org.springframework.cloud.gateway.filter.GlobalFilter; 
+import org.springframework.core.Ordered;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.http.server.reactive.ServerHttpRequest; 
+import org.springframework.http.server.reactive.ServerHttpResponse; 
+import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+import java.nio.charset.StandardCharsets; 
+import java.util.List;
+/**
+* <p>
+* 全局Filter，统一处理会员登录与外部不允许访问的服务 * </p>
+*/
+	@Component
+	public class AuthGlobalFilter implements GlobalFilter, Ordered { 
+    
+    private AntPathMatcher antPathMatcher = new AntPathMatcher();
+    
+		@Override
+		public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+			ServerHttpRequest request = exchange.getRequest(); 
+      String path = request.getURI().getPath(); 
+      //谷粒学院api接口，校验用户必须登录 
+      if(antPathMatcher.match("/api/**/auth/**", path)) {
+					List<String> tokenList = request.getHeaders().get("token"); 
+        	if(null == tokenList) {
+							ServerHttpResponse response = exchange.getResponse();
+        			return out(response);
+   				 } else {
+							//Boolean isCheck = JwtUtils.checkToken(tokenList.get(0)); 
+            	//if(!isCheck) {
+							ServerHttpResponse response = exchange.getResponse(); 
+             	return out(response);
+							// }
+		} }
+				//内部服务接口，不允许外部访问 
+      if(antPathMatcher.match("/**/inner/**", path)) {
+					ServerHttpResponse response = exchange.getResponse();
+      	  return out(response);
+    	}
+			return chain.filter(exchange); 
+    }
+    
+    private Mono<Void> out(ServerHttpResponse response) {
+      JsonObject message = new JsonObject();
+			message.addProperty("success", false);
+			message.addProperty("code", 28004);
+			message.addProperty("data", "鉴权失败");
+			byte[] bits = message.toString().getBytes(StandardCharsets.UTF_8); 
+      DataBuffer buffer = response.bufferFactory().wrap(bits); 	
+      //response.setStatusCode(HttpStatus.UNAUTHORIZED); 
+      //指定编码，否则在浏览器中会中文乱码
+      response.getHeaders().add("Content-Type", "application/json;charset=UTF-8");
+			return response.writeWith(Mono.just(buffer));
+    }
+  }
+```
+
+### 自定义异常处理
+
+服务网关调用服务时可能会有一些异常或服务不可用，它返回错误信息不友好，需要我们覆盖处理
+
+![image-20200906171222969](Springboot%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94API%E7%BD%91%E5%85%B3.assets/image-20200906171222969.png)
+
+ErrorHandlerConfig:
+
+```java
+import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties; 
+import org.springframework.boot.web.reactive.error.ErrorAttributes;
+import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler; 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+import org.springframework.context.annotation.Configuration; 
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.codec.ServerCodecConfigurer; 
+import org.springframework.web.reactive.result.view.ViewResolver;
+import java.util.Collections; 
+import java.util.List;
+/**
+* 覆盖默认的异常处理 *
+*/
+@Configuration
+@EnableConfigurationProperties({ServerProperties.class, ResourceProperties.class})
+public class ErrorHandlerConfig {
+  	private final ServerProperties serverProperties;
+  
+    private final ApplicationContext applicationContext;
+  
+    private final ResourceProperties resourceProperties;
+  
+    private final List<ViewResolver> viewResolvers;
+  
+    private final ServerCodecConfigurer serverCodecConfigurer;
+  
+ 		public ErrorHandlerConfig(ServerProperties serverProperties,ResourceProperties resourceProperties,
+                             ObjectProvider<List<ViewResolver>> viewResolversProvider, 
+                             ServerCodecConfigurer serverCodecConfigurer,
+                             ApplicationContext applicationContext){
+      
+      this.serverProperties = serverProperties;
+			this.applicationContext = applicationContext; 
+      this.resourceProperties = resourceProperties;
+      this.viewResolvers = viewResolversProvider.getIfAvailable(Collections::emptyList);
+      this.serverCodecConfigurer = serverCodecConfigurer;
+    }
+  
+  	@Bean
+  	@Order(Ordered.HIGHEST_PRECEDENCE)
+  	public ErrorWebExceptionHandler errorWebExceptionHandler(ErrorAttributes errorAttributes){
+      JsonExceptionHandler exceptionHandler = new JsonExceptionHandler(
+        errorAttributes,
+				this.resourceProperties, 
+        this.serverProperties.getError(), 
+        this.applicationContext);
+      exceptionHandler.setViewResolvers(this.viewResolvers);
+      
+      exceptionHandler.setMessageWriters(this.serverCodecConfigurer.getWriters());
+      exceptionHandler.setMessageReaders(this.serverCodecConfigurer.getReaders());
+      return exceptionHandler;
+    }
+}
+```
+
+JsonExceptionHandler:
+
+```java
+import org.springframework.boot.autoconfigure.web.ErrorProperties;
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.springframework.boot.autoconfigure.web.reactive.error.DefaultErrorWebException Handler;
+import org.springframework.boot.web.reactive.error.ErrorAttributes; 
+import org.springframework.context.ApplicationContext;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.reactive.function.server.*;
+import java.util.HashMap; 
+import java.util.Map;
+/**
+* 自定义异常处理
+*
+* <p>异常时用JSON代替HTML异常信息<p> *
+*/
+public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
+  	public JsonExceptionHandler(ErrorAttributes errorAttributes,
+                                ResourceProperties resourceProperties,
+																ErrorProperties errorProperties,
+                                ApplicationContext applicationContext) {
+      super(errorAttributes, resourceProperties, errorProperties, applicationContext);
+      /**
+			* 获取异常属性 */
+      @Override
+      protected Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace){
+      	  Map<String, Object> map = new HashMap<>(); 
+       		map.put("success", false);
+					map.put("code", 20005);
+					map.put("message", "网关失败"); 
+        	map.put("data", null);
+					return map;
+      }
+      /**
+			* 指定响应处理方法为JSON处理的方法 
+			* @param errorAttributes
+			*/
+      @Override
+      protected RouterFunction<ServerResponse> getRoutingFunction(ErrorAttributes errorAttributes) {
+        return RouterFunctions.route(RequestPredicates.all(), this::renderErrorResponse);
+    }
+      /**
+			* 根据code获取对应的HttpStatus 
+			* @param errorAttributes
+			*/
+		@Override
+		protected HttpStatus getHttpStatus(Map<String, Object> errorAttributes) { 
+      return HttpStatus.OK;
+    }
+}
+```
 
