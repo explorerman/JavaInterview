@@ -6,7 +6,7 @@
 
 [Springcloud zuul API网关服务](http://www.macrozheng.com/#/cloud/zuul?id=%e5%9c%a8pomxml%e4%b8%ad%e6%b7%bb%e5%8a%a0%e7%9b%b8%e5%85%b3%e4%be%9d%e8%b5%96)
 
-[gateway](http://www.macrozheng.com/#/cloud/gateway)
+[gateway,讲述了router，predicates, filter等基本，还有熔断，限流，服务注册等](http://www.macrozheng.com/#/cloud/gateway)
 
 [使用gateway时定义了跨域，但别的服务中重复设置了允许跨域的过滤器时，出现的不可访问问题](http://www.macrozheng.com/#/technology/gateway_cors)
 
@@ -164,16 +164,19 @@ spring:
           enabled: true
 			routes:
 			- id: SERVICE-ACL
-				uri: lb://SERVICE-ACL predicates:
-				- Path=/*/acl/** # 路径匹配
+				uri: lb://SERVICE-ACL 
+				predicates:
+					- Path=/*/acl/** # 路径匹配
 
 			- id: SERVICE-EDU
-				uri: lb://SERVICE-EDU predicates:
-				- Path=/eduservice/** # 路径匹配
+				uri: lb://SERVICE-EDU 
+				predicates:
+					- Path=/eduservice/** # 路径匹配
 
 			- id: SERVICE-UCENTER
-				uri: lb://SERVICE-UCENTER predicates:
-				- Path=/ucenter/** # 路径匹配
+				uri: lb://SERVICE-UCENTER 
+				predicates:
+					- Path=/ucenter/** # 路径匹配
 nacos:
   discovery:
 	server-addr: 127.0.0.1:8848
