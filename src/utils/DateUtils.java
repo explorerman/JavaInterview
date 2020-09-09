@@ -18,7 +18,7 @@ import java.util.GregorianCalendar;
  * @reviewer 审核人
  * @history 修订历史（历次修订内容、修订人、修订时间等）
  */
-public class DataUtils {
+public class DateUtils {
     /**
      * 取得当前日期所在的周数
      */
@@ -149,7 +149,7 @@ public class DataUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String s = sdf.format(c.getTime());
         Date data = sdf.parse(s);
-        return DataUtils.getFirstDayOfWeek(data);
+        return DateUtils.getFirstDayOfWeek(data);
     }
 
 
@@ -172,7 +172,7 @@ public class DataUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String s = sdf.format(c.getTime());
         Date parse = sdf.parse(s);
-        return DataUtils.getLastDayOfWeek(parse);
+        return DateUtils.getLastDayOfWeek(parse);
     }
 
     /**
@@ -204,9 +204,32 @@ public class DataUtils {
     }
 
     public static void main(String[] args) {
-        final int curYearNum = DataUtils.getCurYearNum(new Date());
-        final int YearNum = DataUtils.getYearNum(new Date());
-        System.out.println(curYearNum);
-        System.out.println(YearNum);
+        // 其日历字段已由当前日期和时间初始化：
+        Calendar rightNow = Calendar.getInstance(); // 子类对象
+        // 获取年
+        int year = rightNow.get(Calendar.YEAR);
+        // 获取月
+        int month = rightNow.get(Calendar.MONTH);
+        // 获取日
+        int date = rightNow.get(Calendar.DATE);
+        //获取几点
+        int hour = rightNow.get(Calendar.HOUR_OF_DAY);
+        //获取几分
+        int minute = rightNow.get(Calendar.MINUTE);
+        //获取几秒
+        int second = rightNow.get(Calendar.SECOND);
+        //获取上午下午
+        int moa = rightNow.get(Calendar.AM_PM);
+        if (moa == 1)
+            System.out.println("下午");
+        else
+            System.out.println("上午");
+
+        System.out.println(year + "年" + (month + 1) + "月" + date + "日" + hour + "时" + minute + "分" + second + "秒");
+        rightNow.add(Calendar.YEAR, 5);
+        rightNow.add(Calendar.DATE, -10);
+        int year1 = rightNow.get(Calendar.YEAR);
+        int date1 = rightNow.get(Calendar.DATE);
+        System.out.println(year1 + "年" + (month + 1) + "月" + date1 + "日" + hour + "时" + minute + "分" + second + "秒");
     }
 }
