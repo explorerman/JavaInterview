@@ -1,4 +1,4 @@
-1.maven的pom.xml的各种标签详细解释
+## maven的pom.xml的各种标签详细解释
 
 详细解释都放在 https://gitee.com/JIEE_Shine/guli_parent.git项目中
 
@@ -7,6 +7,10 @@
 [pom文件各种配置参考链接](https://blog.csdn.net/qq_33363618/article/details/79438044)
 
 [pom配置参考链接](https://www.cnblogs.com/zhoudaxing/p/11338183.html)
+
+## 谷粒学院代码结构图
+
+
 
 ![image-20200908081723251](springboot%E5%AE%9E%E6%88%98%E2%80%94%E2%80%94%E9%85%8D%E5%90%88maven%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE.assets/image-20200908081723251.png)
 
@@ -39,3 +43,7 @@
 ​	service-ucenter:会员api接口服务 
 
 ​	service-vod:视频点播api接口服务
+
+## springboot注解
+
+[Springboot2.2.1注解大全](https://www.imooc.com/article/290348)
