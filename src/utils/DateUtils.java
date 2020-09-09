@@ -56,12 +56,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 获取指定日期所在的年份
+     * 功能描述 获取指定日期所在的年份
+     *
+     * @param * @param date
+     * @return {@link int}
      * @name
      * @createTime: 2020/9/8 16:53
-     * @param  * @param date
      * @author 李杰
-     * @return {@link int}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static int getCurYearNum(Date date) {
@@ -71,7 +72,6 @@ public class DateUtils {
         String curYear = sdf.format(date);
         return Integer.valueOf(curYear);
     }
-
 
 
     /**
@@ -231,28 +231,30 @@ public class DateUtils {
     }
 
     /**
-     *功能描述
+     * 功能描述
+     *
+     * @param *    @param date
+     * @param days
+     * @return {@link java.util.Date}
      * @name 在当前日期上加 N天,N可以为负
      * @createTime: 2020/9/9 23:17
-     * @param  * @param date
-     * @param days
      * @author 李杰
-     * @return {@link java.util.Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date addDate(Date date, int days) {
         Date d = null;
-        d = new Date(date.getTime() + (long)(days * 24 * 60 * 60) * 1000L);
+        d = new Date(date.getTime() + (long) (days * 24 * 60 * 60) * 1000L);
         return d;
     }
 
     /**
-     *功能描述 获取下一天的日期
+     * 功能描述 获取下一天的日期
+     *
+     * @param * @param date
+     * @return {@link java.util.Date}
      * @name
      * @createTime: 2020/9/9 23:18
-     * @param  * @param date
      * @author 李杰
-     * @return {@link java.util.Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getNextDay(Date date) {
@@ -262,13 +264,15 @@ public class DateUtils {
         date = calendar.getTime();
         return date;
     }
+
     /**
-     *功能描述 获取上一天的日期
+     * 功能描述 获取上一天的日期
+     *
+     * @param * @param date
+     * @return {@link java.util.Date}
      * @name
      * @createTime: 2020/9/9 23:18
-     * @param  * @param date
      * @author 李杰
-     * @return {@link java.util.Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getPreDay(Date date) {
@@ -280,13 +284,14 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 根据指定格式，获取日期
+     * 功能描述 根据指定格式，获取日期
+     *
+     * @param *       @param dateStr
+     * @param pattern
+     * @return {@link java.util.Date}
      * @name
      * @createTime: 2020/9/9 23:22
-     * @param  * @param dateStr
-     * @param pattern
      * @author 李杰
-     * @return {@link java.util.Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getDateFromStr(String dateStr, String pattern) {
@@ -303,13 +308,14 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 根据指定格式，从Date获取日期String
+     * 功能描述 根据指定格式，从Date获取日期String
+     *
+     * @param *       @param date
+     * @param pattern
+     * @return {@link java.lang.String}
      * @name
      * @createTime: 2020/9/9 23:24
-     * @param  * @param date
-     * @param pattern
      * @author 李杰
-     * @return {@link java.lang.String}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static String getDateToStr(Date date, String pattern) {
@@ -320,12 +326,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 从某日期到当前时间的间隔
+     * 功能描述 从某日期到当前时间的间隔
+     *
+     * @param * @param fromDate
+     * @return {@link long}
      * @name
      * @createTime: 2020/9/9 23:26
-     * @param  * @param fromDate 
      * @author 李杰
-     * @return {@link long}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static final long daysInterval(Date fromDate) {
@@ -338,13 +345,14 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 从fromDate到toDate的间隔，间隔单位为：年
+     * 功能描述 从fromDate到toDate的间隔，间隔单位为：年
+     *
+     * @param *      @param fromDate
+     * @param toDate
+     * @return {@link int}
      * @name
      * @createTime: 2020/9/9 23:29
-     * @param  * @param fromDate
-     * @param toDate
      * @author 李杰
-     * @return {@link int}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static final int yearsInterval(Date fromDate, Date toDate) {
@@ -359,12 +367,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 从fromDate到当前系统时间的间隔，间隔单位为：年
+     * 功能描述 从fromDate到当前系统时间的间隔，间隔单位为：年
+     *
+     * @param * @param fromDate
+     * @return {@link int}
      * @name
      * @createTime: 2020/9/9 23:29
-     * @param  * @param fromDate
      * @author 李杰
-     * @return {@link int}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static final int yearsInterval(Date fromDate) {
@@ -377,13 +386,14 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 比较两个时间是否相同
+     * 功能描述 比较两个时间是否相同
+     *
+     * @param *  @param d1
+     * @param d2
+     * @return {@link boolean}
      * @name
      * @createTime: 2020/9/9 23:33
-     * @param  * @param d1
-     * @param d2
      * @author 李杰
-     * @return {@link boolean}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static boolean compareDate(Date d1, Date d2) {
@@ -413,12 +423,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 获取当前周的第一天
+     * 功能描述 获取当前周的第一天
+     *
+     * @param * @param d
+     * @return {@link Date}
      * @name
      * @createTime: 2020/9/9 23:32
-     * @param  * @param d
      * @author 李杰
-     * @return {@link Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getFirstWeek(Date d) {
@@ -430,12 +441,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 获取当前周的最后一天
+     * 功能描述 获取当前周的最后一天
+     *
+     * @param * @param d
+     * @return {@link Date}
      * @name
      * @createTime: 2020/9/9 23:32
-     * @param  * @param d
      * @author 李杰
-     * @return {@link Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getLastWeek(Date d) {
@@ -447,12 +459,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 获取当前月的第一天
+     * 功能描述 获取当前月的第一天
+     *
+     * @param * @param d
+     * @return {@link Date}
      * @name
      * @createTime: 2020/9/9 23:32
-     * @param  * @param d
      * @author 李杰
-     * @return {@link Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getFirstMonth(Date d) {
@@ -464,12 +477,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 获取当前月的最后一天
+     * 功能描述 获取当前月的最后一天
+     *
+     * @param * @param d
+     * @return {@link Date}
      * @name
      * @createTime: 2020/9/9 23:32
-     * @param  * @param d
      * @author 李杰
-     * @return {@link Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getLastMonth(Date d) {
@@ -481,12 +495,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 获取当前年的第一天
+     * 功能描述 获取当前年的第一天
+     *
+     * @param * @param d
+     * @return {@link Date}
      * @name
      * @createTime: 2020/9/9 23:32
-     * @param  * @param d
      * @author 李杰
-     * @return {@link Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getFirstYear(Date d) {
@@ -498,12 +513,13 @@ public class DateUtils {
     }
 
     /**
-     *功能描述 获取当前年的最后一天
+     * 功能描述 获取当前年的最后一天
+     *
+     * @param * @param d
+     * @return {@link Date}
      * @name
      * @createTime: 2020/9/9 23:32
-     * @param  * @param d
      * @author 李杰
-     * @return {@link Date}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static Date getLastYear(Date d) {
@@ -549,5 +565,7 @@ public class DateUtils {
         System.out.println(DateUtils.getLastMonth(new Date()));
         System.out.println(DateUtils.getFirstWeek(new Date()));
         System.out.println(DateUtils.getLastWeek(new Date()));
+
+        System.out.println(DateUtils.getHour(2));
     }
 }
