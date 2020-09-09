@@ -43,9 +43,8 @@ public class DateUtils {
      * 取得指定日期所在周的年份
      */
     public static int getYearNum(Date date) {
-        if (date == null) {
+        if (date == null)
             return 0;
-        }
         Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.setMinimalDaysInFirstWeek(4);
@@ -57,23 +56,22 @@ public class DateUtils {
     }
 
     /**
-     * 功能描述
-     *
-     * @param * @param date
-     * @return {@link int}
-     * @name 获取指定日期所在的年份
+     *功能描述 获取指定日期所在的年份
+     * @name
      * @createTime: 2020/9/8 16:53
+     * @param  * @param date
      * @author 李杰
+     * @return {@link int}
      * @history 修订历史（历次修订内容、修订人、修订时间等）
      */
     public static int getCurYearNum(Date date) {
-        if (date == null) {
+        if (date == null)
             return 0;
-        }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
         String curYear = sdf.format(date);
         return Integer.valueOf(curYear);
     }
+
 
 
     /**
@@ -203,6 +201,319 @@ public class DateUtils {
         return c.get(Calendar.WEEK_OF_YEAR);
     }
 
+    /**
+     * 求两个时间的间隔差
+     *
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
+    public static final long daysInterval(Date fromDate, Date toDate) {
+        return (toDate.getTime() - fromDate.getTime()) / 86400000L;
+    }
+
+    /**
+     * 求两个时间的间隔差
+     *
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
+    public static int daysInterval(String fromDate, String toDate) throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(sdf.parse(fromDate));
+        long time1 = cal.getTimeInMillis();
+        cal.setTime(sdf.parse(toDate));
+        long time2 = cal.getTimeInMillis();
+        long between_days = (time2 - time1) / (1000 * 3600 * 24);
+        return Integer.parseInt(String.valueOf(between_days));
+    }
+
+    /**
+     *功能描述
+     * @name 在当前日期上加 N天,N可以为负
+     * @createTime: 2020/9/9 23:17
+     * @param  * @param date
+     * @param days
+     * @author 李杰
+     * @return {@link java.util.Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date addDate(Date date, int days) {
+        Date d = null;
+        d = new Date(date.getTime() + (long)(days * 24 * 60 * 60) * 1000L);
+        return d;
+    }
+
+    /**
+     *功能描述 获取下一天的日期
+     * @name
+     * @createTime: 2020/9/9 23:18
+     * @param  * @param date
+     * @author 李杰
+     * @return {@link java.util.Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getNextDay(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, +1);
+        date = calendar.getTime();
+        return date;
+    }
+    /**
+     *功能描述 获取上一天的日期
+     * @name
+     * @createTime: 2020/9/9 23:18
+     * @param  * @param date
+     * @author 李杰
+     * @return {@link java.util.Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getPreDay(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_MONTH, -1);
+        date = calendar.getTime();
+        return date;
+    }
+
+    /**
+     *功能描述 根据指定格式，获取日期
+     * @name
+     * @createTime: 2020/9/9 23:22
+     * @param  * @param dateStr
+     * @param pattern
+     * @author 李杰
+     * @return {@link java.util.Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getDateFromStr(String dateStr, String pattern) {
+        String p = pattern == null ? "yyyy-MM-dd" : pattern;
+        SimpleDateFormat sdf = new SimpleDateFormat(p);
+        Date d = null;
+
+        try {
+            d = sdf.parse(dateStr);
+        } catch (Exception var6) {
+        }
+
+        return d;
+    }
+
+    /**
+     *功能描述 根据指定格式，从Date获取日期String
+     * @name
+     * @createTime: 2020/9/9 23:24
+     * @param  * @param date
+     * @param pattern
+     * @author 李杰
+     * @return {@link java.lang.String}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static String getDateToStr(Date date, String pattern) {
+        String p = pattern == null ? "yyyy-MM-dd" : pattern;
+        SimpleDateFormat sdf = new SimpleDateFormat(p);
+        Date d = date == null ? new Date() : date;
+        return sdf.format(d);
+    }
+
+    /**
+     *功能描述 从某日期到当前时间的间隔
+     * @name
+     * @createTime: 2020/9/9 23:26
+     * @param  * @param fromDate 
+     * @author 李杰
+     * @return {@link long}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static final long daysInterval(Date fromDate) {
+        if (fromDate == null) {
+            return 0L;
+        } else {
+            Date toDate = new Date();
+            return daysInterval(fromDate, toDate);
+        }
+    }
+
+    /**
+     *功能描述 从fromDate到toDate的间隔，间隔单位为：年
+     * @name
+     * @createTime: 2020/9/9 23:29
+     * @param  * @param fromDate
+     * @param toDate
+     * @author 李杰
+     * @return {@link int}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static final int yearsInterval(Date fromDate, Date toDate) {
+        return fromDate != null && toDate != null ? toDate.getYear() - fromDate.getYear() : 0;
+    }
+
+    public static final String leftDays(Date fromDate) {
+        Date toDate = new Date();
+        long l = daysInterval(fromDate, toDate);
+        l = l * -1L + 1L;
+        return l <= 0L ? "到期" : String.valueOf(l);
+    }
+
+    /**
+     *功能描述 从fromDate到当前系统时间的间隔，间隔单位为：年
+     * @name
+     * @createTime: 2020/9/9 23:29
+     * @param  * @param fromDate
+     * @author 李杰
+     * @return {@link int}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static final int yearsInterval(Date fromDate) {
+        if (fromDate == null) {
+            return 0;
+        } else {
+            Date toDate = new Date();
+            return yearsInterval(fromDate, toDate);
+        }
+    }
+
+    /**
+     *功能描述 比较两个时间是否相同
+     * @name
+     * @createTime: 2020/9/9 23:33
+     * @param  * @param d1
+     * @param d2
+     * @author 李杰
+     * @return {@link boolean}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static boolean compareDate(Date d1, Date d2) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(d1).equals(sdf.format(d2));
+    }
+
+    public static String getMinu(int minutes) {
+        GregorianCalendar calTmp = new GregorianCalendar();
+        calTmp.add(12, -1 * minutes);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf.format(calTmp.getTime());
+    }
+
+    public static String getHour(int hours) {
+        GregorianCalendar calTmp = new GregorianCalendar();
+        calTmp.add(10, -1 * hours);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return sdf.format(calTmp.getTime());
+    }
+
+    public static String getDate(int days) {
+        GregorianCalendar calTmp = new GregorianCalendar();
+        calTmp.add(5, -1 * days);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.format(calTmp.getTime());
+    }
+
+    /**
+     *功能描述 获取当前周的第一天
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @param  * @param d
+     * @author 李杰
+     * @return {@link Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getFirstWeek(Date d) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(d);
+        int dayOfWeek = cal.get(7);
+        cal.add(5, cal.getActualMinimum(7) - dayOfWeek + 1);
+        return cal.getTime();
+    }
+
+    /**
+     *功能描述 获取当前周的最后一天
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @param  * @param d
+     * @author 李杰
+     * @return {@link Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getLastWeek(Date d) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(d);
+        int dayOfWeek = cal.get(7);
+        cal.add(5, cal.getActualMaximum(7) - dayOfWeek + 1);
+        return cal.getTime();
+    }
+
+    /**
+     *功能描述 获取当前月的第一天
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @param  * @param d
+     * @author 李杰
+     * @return {@link Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getFirstMonth(Date d) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(d);
+        int dayOfWeek = cal.get(5);
+        cal.add(5, cal.getActualMinimum(5) - dayOfWeek);
+        return cal.getTime();
+    }
+
+    /**
+     *功能描述 获取当前月的最后一天
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @param  * @param d
+     * @author 李杰
+     * @return {@link Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getLastMonth(Date d) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(d);
+        int dayOfWeek = cal.get(5);
+        cal.add(5, cal.getActualMaximum(5) - dayOfWeek);
+        return cal.getTime();
+    }
+
+    /**
+     *功能描述 获取当前年的第一天
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @param  * @param d
+     * @author 李杰
+     * @return {@link Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getFirstYear(Date d) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(d);
+        int dayOfWeek = cal.get(6);
+        cal.add(5, cal.getActualMinimum(6) - dayOfWeek);
+        return cal.getTime();
+    }
+
+    /**
+     *功能描述 获取当前年的最后一天
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @param  * @param d
+     * @author 李杰
+     * @return {@link Date}
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getLastYear(Date d) {
+        Calendar cal = new GregorianCalendar();
+        cal.setTime(d);
+        int dayOfWeek = cal.get(6);
+        cal.add(5, cal.getActualMaximum(6) - dayOfWeek);
+        return cal.getTime();
+    }
+
     public static void main(String[] args) {
         // 其日历字段已由当前日期和时间初始化：
         Calendar rightNow = Calendar.getInstance(); // 子类对象
@@ -231,5 +542,12 @@ public class DateUtils {
         int year1 = rightNow.get(Calendar.YEAR);
         int date1 = rightNow.get(Calendar.DATE);
         System.out.println(year1 + "年" + (month + 1) + "月" + date1 + "日" + hour + "时" + minute + "分" + second + "秒");
+
+        System.out.println(DateUtils.getFirstYear(new Date()));
+        System.out.println(DateUtils.getLastYear(new Date()));
+        System.out.println(DateUtils.getFirstMonth(new Date()));
+        System.out.println(DateUtils.getLastMonth(new Date()));
+        System.out.println(DateUtils.getFirstWeek(new Date()));
+        System.out.println(DateUtils.getLastWeek(new Date()));
     }
 }
