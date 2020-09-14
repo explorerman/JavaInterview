@@ -251,7 +251,9 @@ public class ResultVo {
    return ResultVo.ok().code(25000).message("支付中");
 ```
 
+## 统一异常处理
 
+## 统一日志处理
 
 ## 参考链接
 
