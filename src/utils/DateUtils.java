@@ -308,6 +308,29 @@ public class DateUtils {
     }
 
     /**
+     * 根据指定格式，从String获取日期Date，默认格式是yyyy-MM-dd HH:mm:ss
+     *
+     * @param * @param dateStr
+     * @return {@link java.util.Date}
+     * @name
+     * @createTime: 2020/9/9 23:22
+     * @author 李杰
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getDateFromStr(String dateStr) {
+        String p = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(p);
+        Date d = null;
+
+        try {
+            d = sdf.parse(dateStr);
+        } catch (Exception var6) {
+        }
+
+        return d;
+    }
+
+    /**
      * 功能描述 根据指定格式，从Date获取日期String
      *
      * @param *       @param date
@@ -441,6 +464,25 @@ public class DateUtils {
     }
 
     /**
+     * 功能描述 获取当前周的第一天
+     *
+     * @param * @param d
+     * @return {@link Date}
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @author 李杰
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getFirstWeek(String d) {
+        Calendar cal = new GregorianCalendar();
+        final Date dateFromStr = getDateFromStr(d, null);
+        cal.setTime(dateFromStr);
+        int dayOfWeek = cal.get(7);
+        cal.add(5, cal.getActualMinimum(7) - dayOfWeek + 1);
+        return cal.getTime();
+    }
+
+    /**
      * 功能描述 获取当前周的最后一天
      *
      * @param * @param d
@@ -453,6 +495,25 @@ public class DateUtils {
     public static Date getLastWeek(Date d) {
         Calendar cal = new GregorianCalendar();
         cal.setTime(d);
+        int dayOfWeek = cal.get(7);
+        cal.add(5, cal.getActualMaximum(7) - dayOfWeek + 1);
+        return cal.getTime();
+    }
+
+    /**
+     * 功能描述 获取当前周的最后一天, 参数为String
+     *
+     * @param * @param d
+     * @return {@link Date}
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @author 李杰
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getLastWeek(String d) {
+        Calendar cal = new GregorianCalendar();
+        final Date dateFromStr = getDateFromStr(d, null);
+        cal.setTime(dateFromStr);
         int dayOfWeek = cal.get(7);
         cal.add(5, cal.getActualMaximum(7) - dayOfWeek + 1);
         return cal.getTime();
@@ -477,6 +538,25 @@ public class DateUtils {
     }
 
     /**
+     * 功能描述 获取当前月的第一天,参数是String
+     *
+     * @param * @param d
+     * @return {@link Date}
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @author 李杰
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getFirstMonth(String d) {
+        Calendar cal = new GregorianCalendar();
+        final Date dateFromStr = getDateFromStr(d, null);
+        cal.setTime(dateFromStr);
+        int dayOfWeek = cal.get(5);
+        cal.add(5, cal.getActualMinimum(5) - dayOfWeek);
+        return cal.getTime();
+    }
+
+    /**
      * 功能描述 获取当前月的最后一天
      *
      * @param * @param d
@@ -493,6 +573,27 @@ public class DateUtils {
         cal.add(5, cal.getActualMaximum(5) - dayOfWeek);
         return cal.getTime();
     }
+
+    /**
+     * 功能描述 获取当前月的最后一天，参数为String
+     *
+     * @param * @param d
+     * @return {@link Date}
+     * @name
+     * @createTime: 2020/9/9 23:32
+     * @author 李杰
+     * @history 修订历史（历次修订内容、修订人、修订时间等）
+     */
+    public static Date getLastMonth(String d) {
+        Calendar cal = new GregorianCalendar();
+        final Date dateFromStr = getDateFromStr(d, null);
+        cal.setTime(dateFromStr);
+        int dayOfWeek = cal.get(5);
+        cal.add(5, cal.getActualMaximum(5) - dayOfWeek);
+        return cal.getTime();
+    }
+
+
 
     /**
      * 功能描述 获取当前年的第一天
@@ -547,10 +648,11 @@ public class DateUtils {
         int second = rightNow.get(Calendar.SECOND);
         //获取上午下午
         int moa = rightNow.get(Calendar.AM_PM);
-        if (moa == 1)
+        if (moa == 1) {
             System.out.println("下午");
-        else
+        } else {
             System.out.println("上午");
+        }
 
         System.out.println(year + "年" + (month + 1) + "月" + date + "日" + hour + "时" + minute + "分" + second + "秒");
         rightNow.add(Calendar.YEAR, 5);
@@ -567,5 +669,8 @@ public class DateUtils {
         System.out.println(DateUtils.getLastWeek(new Date()));
 
         System.out.println(DateUtils.getHour(2));
+
+        final Date dateFromStr = getDateFromStr("2020-09-14 18:3:54", null);
+        System.out.println(dateFromStr);
     }
 }
