@@ -1,5 +1,3 @@
-package LeetCode_tencent;
-
 import java.util.HashMap;
 
 public class number1 {
