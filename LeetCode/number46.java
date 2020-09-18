@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-//回溯法——排列问题
+//回溯法——排列问题(数组中没有重复元素)
 public class number46 {
     public List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
