@@ -1,7 +1,6 @@
-package leetcode_backtracking;
-
 import java.util.ArrayList;
 import java.util.List;
+
 //回溯法——组合问题（元素可重复，不需要去重）
 public class number39 {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {

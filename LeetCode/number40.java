@@ -1,18 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author 李杰
- * @version 1.0
- * @Description 组合总和2（数组中元素只能使用一次）
- * @package
- * @file ${fileName.java}
- * @createTime: 创建时间: 2020/9/18 9:24
- * @title 标题: 组合总和2（数组中元素只能使用一次）
- * @module 模块: 模块名称
- * @reviewer 审核人
- * @history 修订历史（历次修订内容、修订人、修订时间等）
- */
+//回溯法——组合问题（元素不可重复，需要去重）
 public class number40 {
     // 输入: candidates = [10,1,2,7,6,1,5], target = 8,
     //所求解集为:
