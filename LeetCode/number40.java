@@ -25,9 +25,11 @@ public class number40 {
             result.add(new ArrayList<>(level));
         }
         for (int i = start; i < candidates.length; i++){
+            //大剪枝
             if (target - candidates[i] < 0) {
                 break;
             }
+            //小剪枝
             if (i > start && candidates[i] == candidates[i - 1]) {
                 continue;
             }
