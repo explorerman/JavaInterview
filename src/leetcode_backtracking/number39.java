@@ -11,6 +11,13 @@ public class number39 {
         return res;
     }
 
+    // 输入：candidates = [2,3,5], target = 8,
+    //所求解集为：
+    //[
+    //  [2,2,2,2],
+    //  [2,3,3],
+    //  [3,5]
+    //]
     private void combinationSumDFS(List<List<Integer>> result, ArrayList<Integer> level, int start, int[] candidates, int target) {
         if (target < 0) return;
         if(target == 0){
