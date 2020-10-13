@@ -28,6 +28,7 @@ public class number138 {
         while (p != null) {
             Node newNode = new Node(p.val);
             newNode.next = p.next;
+            p.next = newNode;
             p = newNode.next;
         }
         p = head;

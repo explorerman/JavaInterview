@@ -1,13 +1,16 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //回溯法——排列问题(数组中有重复元素，需要去重)
+// 1,1,2
 public class number47 {
     public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> res = new ArrayList<>();
         if(nums == null || nums.length == 0) return res;
         //使用visited可以防止有重复数字的全排列，0是未访问，1是访问
         int[] visited = new int[nums.length];
+        Arrays.sort(nums);
         permuteDFS(res,new ArrayList<Integer>(),nums, visited);
         return res;
     }
@@ -31,5 +34,9 @@ public class number47 {
             //取消选择
             levelList.remove(levelList.size() - 1);
         }
+    }
+
+    public static void main(String[] args) {
+        new number47().permuteUnique(new int[]{1,1,2});
     }
 }
