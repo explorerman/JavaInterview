@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author 李杰
- * @Description 子集，不含重复元素
+ * @Description 子集，不含重复元素   组合问题--不包含重复元素
  */
 public class number78 {
     public List<List<Integer>> subsets(int[] nums) {

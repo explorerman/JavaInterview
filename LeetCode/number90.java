@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * @author 李杰
- * @Description 子集2：包含重复元素
+ * @Description 子集2：包含重复元素   组合问题--包含重复元素
  */
 public class number90 {
     public List<List<Integer>> subsetsWithDup(int[] nums) {
