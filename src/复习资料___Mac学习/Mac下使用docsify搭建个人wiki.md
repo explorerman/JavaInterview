@@ -12,3 +12,4 @@
 
 [csNotes参考示例](https://cyc2018.gitee.io/cs-notes/#/)
 
+晚上总结一下如何在Mac下搭建Node和npm环境环境
