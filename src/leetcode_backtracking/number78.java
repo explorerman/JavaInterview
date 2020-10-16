@@ -24,7 +24,7 @@ public class number78 {
         }
     }
 
-    //追加元素的方法：逐个枚举，空集的幂集只有空集，每增加一个元素，让之前幂集中的每个集合，追加这个元素，就是新增的子集。
+    //方法2：追加元素的方法：逐个枚举，空集的幂集只有空集，每增加一个元素，让之前幂集中的每个集合，追加这个元素，就是新增的子集。
     public static List<List<Integer>> enumerate(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         res.add(new ArrayList<Integer>());
@@ -38,7 +38,7 @@ public class number78 {
         }
         return res;
     }
-   // 集合的每个元素，都有可以选或不选，用二进制和位运算，可以很好的表示。
+   // 方法3：集合的每个元素，都有可以选或不选，用二进制和位运算，可以很好的表示。
     public static List<List<Integer>> binaryBit(int[] nums) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         for (int i = 0; i < (1 << nums.length); i++) {    //左移位：相当于1 * 2 ^ nums.length
