@@ -11,6 +11,8 @@
 3. [Mac下修改权限](https://blog.csdn.net/x1876631/article/details/70162009/)
 4. [Missing write access to /usr/local/lib/node_modules，在命令前增加sudo即可](https://blog.csdn.net/qq_27093465/article/details/103657488)
 
+[重点参考，javaguide的例子](https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247486555&idx=2&sn=8486026ee9f9ba645ff0363df6036184&chksm=cea24390f9d5ca86ff4177c0aca5e719de17dc89e918212513ee661dd56f17ca8269f4a6e303&token=298703358&lang=zh_CN#rd)
+
 [参考链接](https://juemuren4449.com/archives/docsify-deploy-and-configuration)
 
 [Windows下使用GitHub page + docsify搭建个人wiki](https://zhuanlan.zhihu.com/p/101126727)
@@ -25,5 +27,5 @@
 
 [csNotes参考示例](https://cyc2018.gitee.io/cs-notes/#/)
 
-晚上总结一下如何在Mac下搭建Node和npm环境环境
+
 
