@@ -3,6 +3,7 @@ package Stream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class StreamApiExample {
@@ -28,5 +29,15 @@ public class StreamApiExample {
         stream1.flatMap(list -> list.stream()).forEach(i -> System.out.println(i));
         //原来的stream中有两个元素，分别是两个List<Integer>，执行flatMap()之后，
         // 将每个List都“摊平”成了一个个的数字，所以会新产生一个由5个数字组成的Stream。所以最终将输出1~5这5个数字。
+
+        //reduce()
+        // 找出最长的单词
+        Stream<String> stream2 = Stream.of("I", "love", "you", "too");
+        Optional<String> longest = stream2.reduce((s1, s2) -> s1.length()>=s2.length() ? s1 : s2);
+        //Optional<String> longest = stream.max((s1, s2) -> s1.length()-s2.length());
+        System.out.println(longest.get());
+    }
+    public void test(){
+
     }
 }
