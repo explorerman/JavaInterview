@@ -1,4 +1,4 @@
-import com.danga.MemCached.MemCachedClient;
+//import com.danga.MemCached.MemCachedClient;
 
 import java.util.Date;
 import java.util.Objects;
@@ -18,13 +18,13 @@ import java.util.Objects;
 public class testMemCachedempirekey {
     public static void main(String[] args) throws InterruptedException {
         //时间都是毫秒
-        MemCachedClient memCachedClient = new MemCachedClient();
-        memCachedClient.set("lijie", "lijie的过期时间测试", new Date(1000L));
-        Thread.sleep(2000L);
-        final Object lijie = memCachedClient.get("lijie");
-        if(!Objects.isNull(lijie)){
-            System.out.println(lijie);
-        }
+//        MemCachedClient memCachedClient = new MemCachedClient();
+//        memCachedClient.set("lijie", "lijie的过期时间测试", new Date(1000L));
+//        Thread.sleep(2000L);
+//        final Object lijie = memCachedClient.get("lijie");
+//        if(!Objects.isNull(lijie)){
+//            System.out.println(lijie);
+//        }
     }
 
 }
