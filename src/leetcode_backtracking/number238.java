@@ -65,7 +65,27 @@ public class number238 {
         return res;
 
     }
+
+
     public static void main(String[] args) {
         new number238().productExceptSelf2(new int[]{1,2,3,4});
+
+        //测试方法，注重找在什么地方打日志
+        int[] nums = new int[]{1,2,3,4};
+        int[] res = new int[]{1,1,1,1};
+        //left：从左边累乘， right：从右边累乘
+        int left = 1, right = 1;
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            System.out.println("i = " + i);
+            res[i] *= left;
+            System.out.print("res-"  + i  +  " = " + res[i] + ", ");
+            left *= nums[i];
+            System.out.print("left = " + left + ", ");
+            res[len - 1 - i] *= right;
+            System.out.print("res-" + (len - 1 - i) + " = " + res[len - 1 - i] + ", ");
+            right *= nums[len - 1 - i];
+            System.out.print("right = " + right  + "\n");
+        }
     }
 }
