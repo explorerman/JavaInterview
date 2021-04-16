@@ -78,7 +78,7 @@
         </Root>-->
 
         <!-- 测试，生产环境使用 -->
-        <!-- 当使用<asyncLogger> or <asyncRoot>时，无需设置系统属性"Log4jContextSelector" -->
+
         <AsyncLogger name="com.jourwon" level="${LOG_INFO_LEVEL}" additivity="false">
             <AppenderRef ref="RollingRandomAccessFileInfo"/>
             <AppenderRef ref="RollingRandomAccessFileError"/>
